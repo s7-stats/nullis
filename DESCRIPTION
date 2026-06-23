@@ -1,0 +1,31 @@
+Package: nullis
+Type: Package
+Title: `statim` Extension for Nonparametric Statistics
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Joshua", "Marie", 
+           email = "joshua.marie.k@gmail.com", 
+           role = c("aut", "cre"))
+  )
+Description: A package designed to extend `statim` package for nonparametric statistics. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    statim, 
+    S7,
+    rlang
+Suggests:
+    testthat (>= 3.0.0)
+Collate:
+    'nullis-package.R'
+    'utils.R'
+    'zzz.R'
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+Depends: 
+    R (>= 4.1.0)  
+URL: https://github.com/s7-stats/nullis
+BugReports: https://github.com/s7-stats/nullis/issues
+RoxygenNote: 7.3.3
+VignetteBuilder: knitr
