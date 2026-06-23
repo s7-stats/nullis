@@ -13,3 +13,7 @@ docs
 docs/
 inst/doc
 *.html
+
+*.o
+*.so
+*.dll
