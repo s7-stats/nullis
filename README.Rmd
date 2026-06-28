@@ -1,0 +1,35 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = FALSE,
+    comment = "#>",
+    fig.path = "man/figures/README-",
+    out.width = "100%",
+    message = FALSE,
+    warning = FALSE
+)
+
+desc = read.dcf("DESCRIPTION")
+desc = setNames(as.list(desc), colnames(desc))
+```
+
+# `r desc$Package` <img src="man/figures/logo.png" align="right" height="139"/>
+
+<!-- badges: start -->
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/statim)](https://CRAN.R-project.org/package=statim) --> 
+<!-- [![R-CMD-check](https://github.com/s7-stats/statim/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/s7-stats/statim/actions/workflows/R-CMD-check.yaml) -->
+<!-- [![Codecov test coverage](https://codecov.io/gh/s7-stats/statim/graph/badge.svg)](https://app.codecov.io/gh/s7-stats/statim) -->
+<!-- badges: end -->
+
+**`r desc$Title`**
+
+## License
+
+MIT + file LICENSE
+
+## Contributing
+
+We are sincerely grateful for contributions; they are beneficial for the project and for us as maintainers. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, pull request guidelines, and workflow notes.

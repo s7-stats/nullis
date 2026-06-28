@@ -4,3 +4,4 @@
 ^\.vscode$
 ^\.github$
 ^LICENSE\.md$
+^README\.Rmd$
