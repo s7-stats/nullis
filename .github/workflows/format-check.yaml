@@ -16,17 +16,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install
+      - name: Install Air
         uses: posit-dev/setup-air@v1
 
       - name: Check
         run: air format . --check
+
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: r-lib/actions/setup-r@v2
+  #     - uses: r-lib/actions/setup-r-dependencies@v2
+  #       with:
+  #         extra-packages: any::lintr
+  #     - run: Rscript -e 'lintr::lint_package()'
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: r-lib/actions/setup-r@v2
+
+      # Temporary: install {statim} from GitHub until it is published.
+      # Once published, remove the two steps below (Install pak, Install statim).
+      - name: Install pak
+        run: Rscript -e 'install.packages("pak", repos = "https://r-lib.github.io/p/pak/stable/")'
+
+      - name: Install statim from GitHub
+        run: Rscript -e 'pak::pkg_install("s7-stats/statim")'
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::lintr
