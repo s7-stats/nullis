@@ -15,9 +15,11 @@ Imports:
     statim,
     S7,
     rlang,
+    BH,
     Rcpp
 Suggests:
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    lintr
 Collate:
     'nullis-package.R'
     'utils.R'
@@ -31,4 +33,5 @@ BugReports: https://github.com/s7-stats/nullis/issues
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 LinkingTo: 
-    Rcpp
+    Rcpp, 
+    BH
