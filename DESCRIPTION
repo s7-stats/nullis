@@ -29,6 +29,8 @@ Collate:
     'var-id.R'
     'var-id-process.R'
     'var-id-info.R'
+    'friedman-test-defs.R'
+    'friedman-test.R'
     'kruskal-test-defs.R'
     'kruskal-test.R'
 Config/testthat/edition: 3
