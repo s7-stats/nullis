@@ -1,13 +1,14 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
+#include <unordered_map>
 #include <boost/math/distributions/chi_squared.hpp>
 #include <Rcpp.h>
 #include "kw.h"
-#include "alloc.h"
 
 // [[Rcpp::depends(BH)]]
 
+using Rcpp::as;
 using Rcpp::List;
 using Rcpp::Named;
 using Rcpp::NumericVector;
@@ -21,31 +22,17 @@ kwObject compute_kw(
         int n_total,
         int k
 ) {
-    // One arena, three slices
-    // Single malloc for the whole function
-    size_t arena_bytes =
-        n_total * sizeof(size_t) +
-        k * sizeof(double) +
-        k * sizeof(int) +
-        alignof(size_t) + alignof(double) + alignof(int); // alignment padding budget
+    std::vector<size_t> indices(n_total);
+    std::vector<double> group_rank_sums(k, 0.0);
+    std::vector<int> group_sizes(k, 0);
 
-    Arena arena(arena_bytes);
-    size_t* indices = arena.allocate<size_t>(n_total);
-    double* group_rank_sums = arena.allocate<double>(k);
-    int* group_sizes = arena.allocate<int>(k);
+    std::iota(indices.begin(), indices.end(), 0);
+    std::sort(
+        indices.begin(),
+        indices.end(),
+        [values](size_t a, size_t b) { return values[a] < values[b]; }
+    );
 
-    // Initialize
-    for (int i = 0; i < k; ++i) {
-        group_rank_sums[i] = 0.0;
-        group_sizes[i] = 0;
-    }
-
-    // Sort indices by value
-    std::iota(indices, indices + n_total, 0);
-    std::sort(indices, indices + n_total,
-              [values](size_t a, size_t b) { return values[a] < values[b]; });
-
-    // Count group sizes
     for (int i = 0; i < n_total; ++i) {
         group_sizes[group_indices[indices[i]]]++;
     }
@@ -53,7 +40,6 @@ kwObject compute_kw(
     double expected_rank_mean = (n_total + 1.0) / 2.0;
     double tie_correction = 0.0;
 
-    // Rank assignment with tie handling
     // Values originate from R's NumericVector (IEEE 754), so exact equality
     // comparison is valid for detecting ties in the sorted order
     for (int i = 0; i < n_total;) {
@@ -75,9 +61,6 @@ kwObject compute_kw(
         i = j;
     }
 
-    // H statistic
-    // Centered formulation
-    // algebraically equivalent to Conover 1999 eq. 5.3
     double h = 0.0;
     double n_plus_1 = n_total + 1.0;
 
@@ -89,7 +72,6 @@ kwObject compute_kw(
     }
     h *= 12.0 / (n_total * n_plus_1);
 
-    // Tie correction
     if (tie_correction > 0.0) {
         double denom = static_cast<double>(n_total) * n_total * n_total - n_total;
         double tie_factor = 1.0 - (tie_correction / denom);
@@ -99,11 +81,10 @@ kwObject compute_kw(
     h = std::max(0.0, h);
     double df = static_cast<double>(k - 1);
 
-    // p-value via chi-squared approximation
     double p_value;
     try {
         boost::math::chi_squared_distribution<double> chi2(df);
-        p_value = 1.0 - boost::math::cdf(chi2, h);
+        p_value = boost::math::cdf(boost::math::complement(chi2, h));
     } catch (const std::exception& e) {
         warning("Chi-squared p-value computation failed: %s. Returning NA.", e.what());
         p_value = NA_REAL;
@@ -126,7 +107,7 @@ List kruskal_wallis_cpp(const List& groups) {
 
     int offset = 0;
     for (int i = 0; i < k; ++i) {
-        NumericVector grp = groups[i];
+        NumericVector grp = as<NumericVector>(groups[i]);
         int grp_size = grp.size();
         std::copy(grp.begin(), grp.end(), values.begin() + offset);
         std::fill(group_indices.begin() + offset, group_indices.begin() + offset + grp_size, i);
@@ -137,7 +118,7 @@ List kruskal_wallis_cpp(const List& groups) {
 
     return List::create(
         Named("statistic") = kw.h,
-        Named("p.value") = kw.p_value,
+        Named("p_value") = kw.p_value,
         Named("df") = kw.df
     );
 }

@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <cstddef>
-#include "alloc.h"
 
 struct kwObject {
     double h;
