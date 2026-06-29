@@ -72,32 +72,12 @@ static fmObject compute_fm(
 }
 
 // [[Rcpp::export]]
-List friedman_test_cpp(const List& blocks) {
-    int k = blocks.size();
-    int n = as<NumericVector>(blocks[0]).size();
-
-    std::vector<double> values(n * k);
-
-    for (int i = 0; i < k; ++i) {
-        NumericVector treatment = as<NumericVector>(blocks[i]);
-        std::copy(treatment.begin(), treatment.end(), values.begin() + i * n);
-    }
-
-    fmObject fr = compute_fm(values.data(), n, k);
-
-    return List::create(
-        Named("statistic") = fr.statistic,
-        Named("p_value") = fr.p_value,
-        Named("df") = fr.df
-    );
-}
-
-// [[Rcpp::export]]
 List friedman_test_matrix(const NumericMatrix& data) {
     int n = data.nrow();
     int k = data.ncol();
 
-    // Copy matrix into column-major flat array: treatment t, block i → values[t * n + i]
+    // Copy matrix into column-major flat array:
+    // treatment t, block i -> values[t * n + i]
     std::vector<double> values(n * k);
     for (int i = 0; i < k; ++i) {
         for (int j = 0; j < n; ++j) {
