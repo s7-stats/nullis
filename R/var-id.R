@@ -16,7 +16,7 @@
 #' @export
 x_by_block = S7::new_class(
     "x_by_block",
-    parent = statim::x_by,
+    parent = statim::var_id,
     properties = list(
         x = S7::class_any,
         group = S7::class_any,
