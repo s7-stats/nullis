@@ -7,3 +7,9 @@
 #' @importFrom statim pairwise
 #' @importFrom statim `%<-%`
 NULL
+
+#' @export
+x_by
+
+#' @export
+pairwise
