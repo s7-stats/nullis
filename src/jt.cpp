@@ -29,8 +29,13 @@ double jt_stat(const NumericVector& x, const IntegerVector& g) {
 
     std::vector<int> indices(n);
     std::iota(indices.begin(), indices.end(), 0);
-    std::stable_sort(indices.begin(), indices.end(),
-                     [&g](int i, int j) { return g[i] < g[j]; });
+    std::stable_sort(
+        indices.begin(), 
+        indices.end(),
+        [&g](int i, int j) { 
+            return g[i] < g[j]; 
+        }
+    );
 
     std::vector<int> group_sizes;
     std::vector<int> group_starts;
@@ -208,8 +213,8 @@ List jonckheere_terpstra_test(
         Named("statistic") = jt.statistic,
         Named("mean") = jt.mean,
         Named("variance") = jt.variance,
-        Named("z.score") = jt.z_score,
-        Named("p.value") = jt.p_value,
+        Named("z_score") = jt.z_score,
+        Named("p_value") = jt.p_value,
         Named("alternative") = alternative,
         Named("approximate") = jt.approximate,
         Named("method") = jt.method
@@ -250,8 +255,8 @@ List jonckheere_terpstra_test_groups(
         Named("statistic") = jt.statistic,
         Named("mean") = jt.mean,
         Named("variance") = jt.variance,
-        Named("z.score") = jt.z_score,
-        Named("p.value") = jt.p_value,
+        Named("z_score") = jt.z_score,
+        Named("p_value") = jt.p_value,
         Named("alternative") = alternative,
         Named("approximate") = jt.approximate,
         Named("method") = jt.method
