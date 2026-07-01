@@ -12,7 +12,7 @@ names, or a tidyselect helper (requires a \code{data} data frame).}
 
 \item{group}{The grouping variable. Same rules as \code{x}.}
 
-\item{b}{The blocking variable. Same rules as \code{x}.}
+\item{block}{The blocking variable. Same rules as \code{x}.}
 }
 \value{
 An \code{x_by_b} / \code{var_id} S7 object.
@@ -20,6 +20,11 @@ An \code{x_by_b} / \code{var_id} S7 object.
 \description{
 An extended version of \code{\link[statim:x_by]{statim::x_by()}} which adds \code{block}, used on statistical
 inference pipeline that applies blocking
+}
+\details{
+Unlike \code{\link[statim:x_by]{statim::x_by()}}, \code{x_by_b()} does not support \code{I()} or \code{inlines()}
+for inline data. Only bare names, \code{c()}, and tidyselect helpers (with
+\code{data} supplied) are accepted for \code{x}, \code{group}, and \code{block}.
 }
 \examples{
 x_by_b(x, g, blocking)
