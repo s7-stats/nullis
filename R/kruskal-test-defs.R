@@ -3,7 +3,10 @@ kwtest_def = statim::stat_define(
     impl = statim::agendas(
         base = statim::baseline(
             fn = function(.proc) {
-                out = kruskal_wallis_group(.proc$x_data[[1]], .proc$group_data[[1]])
+                out = kruskal_wallis_group(
+                    .proc$x_data[[1]],
+                    .proc$group_data[[1]]
+                )
 
                 class_kw_test(
                     # vars = names(.proc$group_data),
