@@ -7,6 +7,18 @@ KW_TEST = statim::HTEST_FN(
     "Kruskal-Wallis Test"
 )
 
+#' Structured result container for Kruskal-Wallis H test
+#'
+#' @description
+#' An S7 class produced by [KW_TEST] pipelines using [statim::x_by] as the
+#' variable mapper `<var_id>`.
+#'
+#' Inherits from [statim::class_stat_infer], so [statim::auto_tidy()] dispatches on it
+#' automatically. Downstream packages can use it as a `parent` in
+#' `S7::new_class()`.
+#'
+#' @usage NULL
+#'
 #' @export
 class_kw_test = S7::new_class(
     "kw_test",
