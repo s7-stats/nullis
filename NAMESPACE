@@ -2,6 +2,7 @@
 
 export(FRIEDMAN_TEST)
 export(KW_TEST)
+export(class_kw_test)
 export(x_by_b)
 importFrom(statim,`%<-%`)
 importFrom(statim,auto_tidy)
