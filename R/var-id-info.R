@@ -1,4 +1,4 @@
-S7::method(var_id_info, x_by_block) = function(.var_id, processed = NULL, ...) {
+S7::method(var_id_info, x_by_b) = function(.var_id, processed = NULL, ...) {
     x_lbl = format_quo_label(.var_id@x)
     g_lbl = format_quo_label(.var_id@group)
     b_lbl = format_quo_label(.var_id@block)

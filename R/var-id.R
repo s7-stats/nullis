@@ -8,14 +8,19 @@
 #' @param group The grouping variable. Same rules as `x`.
 #' @param block The blocking variable. Same rules as `x`.
 #'
-#' @return An `x_by_block` / `var_id` S7 object.
+#' @return An `x_by_b` / `var_id` S7 object.
+#'
+#' @details
+#' Unlike [statim::x_by()], `x_by_b()` does not support `I()` or `inlines()`
+#' for inline data. Only bare names, `c()`, and tidyselect helpers (with
+#' `data` supplied) are accepted for `x`, `group`, and `block`.
 #'
 #' @examples
-#' x_by_block(x, g, blocking)
+#' x_by_b(x, g, blocking)
 #'
 #' @export
-x_by_block = S7::new_class(
-    "x_by_block",
+x_by_b = S7::new_class(
+    "x_by_b",
     parent = statim::var_id,
     properties = list(
         x = S7::class_any,

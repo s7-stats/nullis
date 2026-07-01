@@ -1,4 +1,4 @@
-S7::method(model_processor, x_by_block) = function(x, data = NULL, ...) {
+S7::method(model_processor, x_by_b) = function(x, data = NULL, ...) {
     x_data = if (!is.null(data) && is.data.frame(data)) {
         cols = tidyselect::eval_select(expr = x@x, data = data)
         data[, cols, drop = FALSE]
