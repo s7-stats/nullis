@@ -6,6 +6,29 @@
 \usage{
 KW_TEST(.var_id = NULL, .data = NULL, ...)
 }
+\arguments{
+\item{.var_id}{A variable mapper \verb{<var_id>}. Currently supports \code{x_by()}.
+When supplied, the test executes immediately.}
+
+\item{.data}{A data frame. Only used on the standalone path.}
+
+\item{...}{Additional arguments passed to the implementation. See the
+\strong{Arguments by variable mapper} section for the full list per path.}
+}
+\value{
+A \code{cld_exec} object (in \code{\link[statim:conclude]{statim::conclude()}}), a \code{stat_infer_spec} object, or a
+\code{test_spec} when \code{.var_id = NULL}. Depending on the implementation you wrote, it returns
+any class.
+}
 \description{
-Kruskal-Wallis H test
+\code{KW_TEST()} performs a t-test for one-sample, two-sample, paired, pairwise, or
+formula-based comparisons. If \code{KW_TEST} is supplied within the lazy-loaded pipeline,
+supply \code{KW_TEST} as a function within i.e. \code{prepare_test(.test = KW_TEST)} call.
+}
+\examples{
+set.seed(123)
+x = rcauchy(50, 1, 1.5)
+g = sample(letters[1:5], size = 50, replace = TRUE)
+KW_TEST(x_by(x, g))
+
 }
