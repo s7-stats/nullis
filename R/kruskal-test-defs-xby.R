@@ -1,4 +1,4 @@
-kwtest_def = statim::stat_define(
+kwtest_def_xby = statim::stat_define(
     model_type = x_by,
     impl = statim::agendas(
         base = statim::baseline(
@@ -17,7 +17,15 @@ kwtest_def = statim::stat_define(
         ),
         pairwise = statim::variant(
             fn = function(.proc) {
-                curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
+                # curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
+                curr_data = .proc$x_data[[1]]
+                group_data = .proc$group_data[[1]]
+
+                r = rank(curr_data)
+                statistic = kruskal_wallis_group(
+                    curr_data,
+                    group_data
+                )
             }
         )
     )
