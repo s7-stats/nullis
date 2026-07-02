@@ -67,6 +67,7 @@ class_kw_test = S7::new_class(
                     "p_value must be between 0 and 1 only."
                 }
             }
+
         )
     )
 )
@@ -101,4 +102,13 @@ S7::method(auto_tidy, class_kw_test) = function(x, ...) {
         df = x@df,
         p_value = x@p_value
     )
+}
+
+register_kw_tidy_methods = function() {
+    statim::making_tidy(KW_TEST, on) %<-% method_tidy(
+        default = function(.x, ...) {
+            tibble::as_tibble(.x@data)
+        }
+    )
+    invisible(NULL)
 }
