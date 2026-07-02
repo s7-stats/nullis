@@ -33,6 +33,7 @@ Collate:
     'var-id-info.R'
     'friedman-test-defs.R'
     'friedman-test.R'
+    'kruskal-test-defs-on.R'
     'kruskal-test-defs-xby.R'
     'kruskal-test.R'
 Config/testthat/edition: 3
