@@ -16,7 +16,7 @@ kwtest_def_xby = statim::stat_define(
             }
         ),
         pairwise = statim::variant(
-            fn = function(.proc, p_adj_method = "holm") {
+            fn = function(.proc, p_adj_method = "holm", alpha = 0.05) {
                 # curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
                 curr_data = .proc$x_data[[1]]
                 group_data = vctrs::vec_cast(.proc$group_data[[1]], character())
@@ -33,11 +33,13 @@ kwtest_def_xby = statim::stat_define(
                 k = length(groups)
                 n = tapply(curr_data, group_data, length)
                 N = length(curr_data)
+                sum_r = tapply(r, group_data, sum)
                 mean_r = tapply(r, group_data, mean)
 
                 df_resid = N - k
                 s2 = N * (N + 1) / 12
-                pooled_var = s2 * (N - 1 - h_stat) / df_resid
+                test_stat = (1 / s2) * sum((sum_r^2 / n)) - 3 * (N + 1)
+                pooled_var = s2 * (N - 1 - test_stat) / df_resid
 
                 pairs = combn(groups, 2, simplify = FALSE)
                 group_a = purrr::map_chr(pairs, 1)
@@ -52,18 +54,21 @@ kwtest_def_xby = statim::stat_define(
                 std_err = purrr::map2_dbl(
                     group_a,
                     group_b,
-                    \(x, y) sqrt(pooled_var * (1 / n[[x]] + 1 / n[[y]]))
+                    function(x, y) {
+                        t_crit = qt(1 - alpha / 2, df_resid)
+                        t_crit * sqrt(pooled_var * (1 / n[[x]] + 1 / n[[y]]))
+                    }
                 )
 
-                test_stat = diff / std_err
-                p_value = 2 * pt(abs(test_stat), df_resid, lower.tail = FALSE)
+                t_stat = diff / std_err
+                p_value = 2 * pt(abs(t_stat), df_resid, lower.tail = FALSE)
                 p_adj = p.adjust(p_value, method = p_adj_method)
 
                 tibble::tibble(
                     comparison = paste(group_a, "and", group_b),
                     diff = diff,
                     std_err = std_err,
-                    statistic = test_stat,
+                    statistic = t_stat,
                     df = df_resid,
                     p_value = p_value,
                     p_adj = p_adj
