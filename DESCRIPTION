@@ -17,7 +17,8 @@ Imports:
     rlang,
     BH,
     Rcpp, 
-    cli
+    cli,
+    purrr
 Suggests:
     testthat (>= 3.0.0),
     lintr
