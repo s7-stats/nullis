@@ -5,6 +5,7 @@
 #' @importFrom statim method_tidy
 #' @importFrom statim x_by
 #' @importFrom statim pairwise
+#' @importFrom statim on
 #' @importFrom statim `%<-%`
 NULL
 
@@ -13,3 +14,6 @@ x_by
 
 #' @export
 pairwise
+
+#' @export
+on
