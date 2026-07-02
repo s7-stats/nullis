@@ -18,7 +18,8 @@ Imports:
     BH,
     Rcpp, 
     cli,
-    purrr
+    purrr,
+    vctrs
 Suggests:
     testthat (>= 3.0.0),
     lintr
