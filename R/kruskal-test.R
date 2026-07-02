@@ -36,7 +36,7 @@
 #' @export
 KW_TEST = statim::HTEST_FN(
     "kw_test",
-    defs = list(kwtest_def),
+    defs = list(kwtest_def_xby, kwtest_def_on),
     "Kruskal-Wallis Test"
 )
 
@@ -76,17 +76,6 @@ S7::method(print, class_kw_test) = function(x, ...) {
     .statistic = x@statistic
     .df = x@df
     .p_value = x@p_value
-
-    pval_styler = function(x) {
-        x_num = suppressWarnings(as.numeric(x$value))
-        if (is.na(x_num) || x_num > 0.05) {
-            cli::style_italic(x$value)
-        } else if (x_num > 0.01) {
-            cli::col_red(x$value)
-        } else {
-            cli::style_bold("<0.001")
-        }
-    }
 
     stat_out = tibble::tibble(
         vars = .vars,
