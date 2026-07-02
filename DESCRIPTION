@@ -33,7 +33,7 @@ Collate:
     'var-id-info.R'
     'friedman-test-defs.R'
     'friedman-test.R'
-    'kruskal-test-defs.R'
+    'kruskal-test-defs-xby.R'
     'kruskal-test.R'
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
