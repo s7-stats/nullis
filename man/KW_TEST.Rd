@@ -2,13 +2,15 @@
 % Please edit documentation in R/kruskal-test.R
 \name{KW_TEST}
 \alias{KW_TEST}
-\title{Kruskal-Wallis H test}
+\title{Kruskal-Wallis rank sum test}
 \usage{
 KW_TEST(.var_id = NULL, .data = NULL, ...)
 }
 \arguments{
 \item{.var_id}{A variable mapper \verb{<var_id>}. Currently supports \code{x_by()}.
-When supplied, the test executes immediately.}
+When supplied, the test executes immediately. If \code{.var_id} maps
+multiple grouping variables, one Kruskal-Wallis test runs per grouping
+variable against the same continuous variable.}
 
 \item{.data}{A data frame. Only used on the standalone path.}
 
@@ -16,19 +18,31 @@ When supplied, the test executes immediately.}
 \strong{Arguments by variable mapper} section for the full list per path.}
 }
 \value{
-A \code{cld_exec} object (in \code{\link[statim:conclude]{statim::conclude()}}), a \code{stat_infer_spec} object, or a
-\code{test_spec} when \code{.var_id = NULL}. Depending on the implementation you wrote, it returns
-any class.
+A \code{cld_exec} object (in \code{\link[statim:conclude]{statim::conclude()}}), a \code{stat_infer_spec}
+object, or a \code{test_spec} when \code{.var_id = NULL}. Depending on the
+implementation you wrote, it returns any class.
 }
 \description{
-\code{KW_TEST()} performs a t-test for one-sample, two-sample, paired, pairwise, or
-formula-based comparisons. If \code{KW_TEST} is supplied within the lazy-loaded pipeline,
-supply \code{KW_TEST} as a function within i.e. \code{prepare_test(.test = KW_TEST)} call.
+\code{KW_TEST()} tests whether the distribution of a continuous variable
+differs across the levels of one or more grouping variables. It is the
+rank-based, distribution-free analogue to one-way ANOVA. If \code{KW_TEST} is
+supplied within the lazy-loaded pipeline, supply \code{KW_TEST} as a function
+i.e. \code{prepare_test(.test = KW_TEST)}.
+}
+\details{
+\code{H0}: all samples come from the same distribution (equal medians, under
+the assumption of equal shape). \code{H1}: at least one sample is
+stochastically greater than another.
 }
 \examples{
 set.seed(123)
 x = rcauchy(50, 1, 1.5)
 g = sample(letters[1:5], size = 50, replace = TRUE)
 KW_TEST(x_by(x, g))
+
+# multiple grouping variables -> one test per grouping variable
+# (confirm this call shape against your actual x_by() signature)
+g2 = sample(c("control", "treatment"), size = 50, replace = TRUE)
+KW_TEST(x_by(x, c(g, g2)))
 
 }

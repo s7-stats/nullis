@@ -3,21 +3,29 @@ kwtest_def = statim::stat_define(
     impl = statim::agendas(
         base = statim::baseline(
             fn = function(.proc) {
-                out = kruskal_wallis_group(
-                    .proc$x_data[[1]],
-                    .proc$group_data[[1]]
-                )
+                tests = lapply(.proc$group_data, function(g) {
+                    kruskal_wallis_group(.proc$x_data[[1]], g)
+                })
 
                 class_kw_test(
-                    # vars = names(.proc$group_data),
-                    statistic = out$statistic,
-                    df = out$df,
-                    p_value = out$p_value
+                    vars = names(.proc$group_data),
+                    statistic = vapply(tests, \(t) t$statistic, numeric(1)),
+                    df = vapply(tests, \(t) t$df, numeric(1)),
+                    p_value = vapply(tests, \(t) t$p_value, numeric(1))
                 )
-            },
-            print = function(x, ...) {
-                print(x@data@p_value)
             }
         )
+        # multi = statim::variant(fn = function(.proc) {
+        #     tests = lapply(.proc$group_data, function(g) {
+        #         kruskal_wallis_group(.proc$x_data[[1]], g)
+        #     })
+        #
+        #     class_kw_test(
+        #         vars = names(.proc$group_data),
+        #         statistic = vapply(tests, \(t) t$statistic, numeric(1)),
+        #         df = vapply(tests, \(t) t$df, numeric(1)),
+        #         p_value = vapply(tests, \(t) t$p_value, numeric(1))
+        #     )
+        # })
     )
 )

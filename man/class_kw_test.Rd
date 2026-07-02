@@ -2,12 +2,12 @@
 % Please edit documentation in R/kruskal-test.R
 \name{class_kw_test}
 \alias{class_kw_test}
-\title{Structured result container for Kruskal-Wallis H test}
+\title{Structured result container for Kruskal-Wallis test}
 \description{
 An S7 class produced by \link{KW_TEST} pipelines using \link[statim:x_by]{statim::x_by} as the
 variable mapper \verb{<var_id>}.
 
-Inherits from \link[statim:class_stat_infer]{statim::class_stat_infer}, so \code{\link[statim:auto_tidy]{statim::auto_tidy()}} dispatches on it
-automatically. Downstream packages can use it as a \code{parent} in
-\code{S7::new_class()}.
+Inherits from \link[statim:class_stat_infer]{statim::class_stat_infer}, so \code{\link[statim:auto_tidy]{statim::auto_tidy()}}
+dispatches on it automatically. Downstream packages can use it as a
+\code{parent} in \code{S7::new_class()}.
 }
