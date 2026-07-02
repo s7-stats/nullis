@@ -39,18 +39,16 @@ kwtest_def_xby = statim::stat_define(
                 group_a = purrr::map_chr(pairs, 1)
                 group_b = purrr::map_chr(pairs, 2)
 
-                comparison = paste(group_a, "and", group_b)
-
                 diff = purrr::map2_dbl(
                     group_a,
                     group_b,
-                    ~ mean_r[[.x]] - mean_r[[.y]]
+                    \(x, y) mean_r[[x]] - mean_r[[y]]
                 )
 
                 std_err = purrr::map2_dbl(
                     group_a,
                     group_b,
-                    ~ sqrt(pooled_var * (1 / n[[.x]] + 1 / n[[.y]]))
+                    \(x, y) sqrt(pooled_var * (1 / n[[x]] + 1 / n[[y]]))
                 )
 
                 test_stat = diff / std_err
@@ -58,7 +56,7 @@ kwtest_def_xby = statim::stat_define(
                 p_adj = p.adjust(p_value, method = "holm")
 
                 tibble::tibble(
-                    comparison = comparison,
+                    comparison = paste(group_a, "and", group_b),
                     diff = diff,
                     std_err = std_err,
                     statistic = test_stat,
