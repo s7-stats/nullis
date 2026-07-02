@@ -16,10 +16,14 @@ kwtest_def_xby = statim::stat_define(
             }
         ),
         pairwise = statim::variant(
-            fn = function(.proc, .ci = 0.95) {
+            fn = function(.proc, p_adj_method = "holm") {
                 # curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
                 curr_data = .proc$x_data[[1]]
-                group_data = .proc$group_data[[1]]
+                group_data = vctrs::vec_cast(.proc$group_data[[1]], character())
+                p_adj_method = match.arg(
+                    p_adj_method,
+                    choices = p.adjust.methods
+                )
 
                 r = rank(curr_data)
                 kw = kruskal_wallis_group(curr_data, group_data)
@@ -53,7 +57,7 @@ kwtest_def_xby = statim::stat_define(
 
                 test_stat = diff / std_err
                 p_value = 2 * pt(abs(test_stat), df_resid, lower.tail = FALSE)
-                p_adj = p.adjust(p_value, method = "holm")
+                p_adj = p.adjust(p_value, method = p_adj_method)
 
                 tibble::tibble(
                     comparison = paste(group_a, "and", group_b),
@@ -64,6 +68,23 @@ kwtest_def_xby = statim::stat_define(
                     p_value = p_value,
                     p_adj = p_adj
                 )
+            },
+            print = function(x, ...) {
+                cli::cat_line(cli::rule(left = "Summary", line = "-"), "\n")
+                tabstats::table_default(
+                    x@data,
+                    style_columns = tabstats::td_style(
+                        p_value = pval_styler,
+                        p_adj = pval_styler
+                    ),
+                    vb = list(
+                        char = "\u2502",
+                        after = 1
+                    )
+                )
+                cat("\n\n")
+
+                invisible(x)
             }
         )
     )
