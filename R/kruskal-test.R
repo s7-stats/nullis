@@ -113,7 +113,7 @@ register_kw_tidy_methods = function() {
     statim::making_tidy(KW_TEST, x_by) %<-%
         method_tidy(
             pairwise = function(.x, ...) {
-                .x@data
+                .x@data$comps
             }
         )
     invisible(NULL)
