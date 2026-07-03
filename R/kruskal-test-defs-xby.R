@@ -16,7 +16,7 @@ kwtest_def_xby = statim::stat_define(
             }
         ),
         pairwise = statim::variant(
-            fn = function(.proc, p_adj_method = "holm", alpha = 0.05) {
+            fn = function(.proc, p_adj_method = "holm") {
                 # curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
                 curr_data = .proc$x_data[[1]]
                 group_data = vctrs::vec_cast(.proc$group_data[[1]], character())
@@ -25,59 +25,74 @@ kwtest_def_xby = statim::stat_define(
                     choices = p.adjust.methods
                 )
 
-                r = rank(curr_data)
-                kw = kruskal_wallis_group(curr_data, group_data)
-                h_stat = kw$statistic
-
                 groups = unique(group_data)
                 k = length(groups)
+                if (k < 2) {
+                    cli::cli_abort(
+                        "At least two groups are required for pairwise comparisons."
+                    )
+                }
+
+                x_rank = rank(curr_data)
+                r_bar = tapply(x_rank, group_data, mean)
                 n = tapply(curr_data, group_data, length)
                 N = length(curr_data)
-                sum_r = tapply(r, group_data, sum)
-                mean_r = tapply(r, group_data, mean)
 
-                df_resid = N - k
-                s2 = N * (N + 1) / 12
-                test_stat = (1 / s2) * sum((sum_r^2 / n)) - 3 * (N + 1)
-                pooled_var = s2 * (N - 1 - test_stat) / df_resid
+                # tie_sizes = table(x_rank)
+                tie_sizes = tabulate(x_rank)
+                tie_correction = sum(tie_sizes^3 - tie_sizes) / (12 * (N - 1))
+                rank_var = N * (N + 1) / 12 - tie_correction
 
-                pairs = combn(groups, 2, simplify = FALSE)
+                pairs = utils::combn(groups, 2, simplify = FALSE)
                 group_a = purrr::map_chr(pairs, 1)
                 group_b = purrr::map_chr(pairs, 2)
 
                 diff = purrr::map2_dbl(
                     group_a,
                     group_b,
-                    \(x, y) mean_r[[x]] - mean_r[[y]]
+                    function(x, y) {
+                        r_bar[[x]] - r_bar[[y]]
+                    }
                 )
-
                 std_err = purrr::map2_dbl(
                     group_a,
                     group_b,
                     function(x, y) {
-                        t_crit = qt(1 - alpha / 2, df_resid)
-                        t_crit * sqrt(pooled_var * (1 / n[[x]] + 1 / n[[y]]))
+                        sqrt(rank_var * (1 / n[[x]] + 1 / n[[y]]))
                     }
                 )
 
-                t_stat = diff / std_err
-                p_value = 2 * pt(abs(t_stat), df_resid, lower.tail = FALSE)
+                statistic = diff / std_err
+                p_value = 2 * pnorm(abs(statistic), lower.tail = FALSE)
                 p_adj = p.adjust(p_value, method = p_adj_method)
 
-                tibble::tibble(
-                    comparison = paste(group_a, "and", group_b),
-                    diff = diff,
-                    std_err = std_err,
-                    statistic = t_stat,
-                    df = df_resid,
-                    p_value = p_value,
-                    p_adj = p_adj
+                list(
+                    kw_test = kruskal_wallis_group(
+                        .proc$x_data[[1]],
+                        .proc$group_data[[1]]
+                    ),
+                    comps = tibble::tibble(
+                        comparison = paste(group_a, "and", group_b),
+                        diff = diff,
+                        std_err = std_err,
+                        statistic = statistic,
+                        p_value = p_value,
+                        p_adj = p_adj
+                    )
                 )
             },
             print = function(x, ...) {
                 cli::cat_line(cli::rule(left = "Summary", line = "-"), "\n")
                 tabstats::table_default(
-                    x@data,
+                    tibble::as_tibble(x@data$kw_test),
+                    style_columns = tabstats::td_style(
+                        p_value = pval_styler
+                    )
+                )
+                cat("\n\n")
+                cli::cat_line(cli::rule(left = "Comparison", line = "-"), "\n")
+                tabstats::table_default(
+                    x@data$comps,
                     style_columns = tabstats::td_style(
                         p_value = pval_styler,
                         p_adj = pval_styler
