@@ -10,10 +10,10 @@
 NULL
 
 #' @export
-x_by
+statim::x_by
 
 #' @export
-pairwise
+statim::pairwise
 
 #' @export
-on
+statim::on
