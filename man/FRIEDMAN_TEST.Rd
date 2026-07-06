@@ -44,11 +44,24 @@ details from \link{friedman-xby}.
 }
 
 \examples{
+library(statim)
+
 set.seed(123)
 x = rnorm(30)
 g = rep(letters[1:3], 10)
 b = rep(1:10, each = 3)
+
+# Eager Form
 FRIEDMAN_TEST(x_by_b(x, g, b))
+
+# Piped/Grammar Syntax Form
+out =
+    define_model(x_by_b(x, g, b)) |>
+    prepare_test(FRIEDMAN_TEST) |>     # Or just `prepare()`
+    conclude()
+
+out
+tidy(out)
 
 }
 \seealso{
