@@ -17,10 +17,9 @@
 #' [statim::agendas()] — no `variant()` entries.
 #'
 #' @section Grouped Friedman default class:
-#' No S7 wrapper exists yet. The baseline returns whatever
-#' `friedman_test_group()` returns, unwrapped — a plain list with
-#' `statistic`, `df`, `p_value`. There is no `print()` method and no
-#' [statim::auto_tidy()] dispatch.
+#' By default, returns a [class_friedman_test] object. There is only one
+#' `base` baseline — no variants — so there's nothing else to inherit or
+#' override.
 #'
 #' @examples
 #' set.seed(123)
@@ -38,10 +37,16 @@ friedman_def_xby = statim::stat_define(
     model_type = x_by_b,
     impl = statim::agendas(
         base = statim::baseline(fn = function(.proc) {
-            friedman_test_group(
+            out = friedman_test_group(
                 .proc$x_data[[1]],
                 .proc$group_data[[1]],
                 .proc$block_data[[1]]
+            )
+
+            class_friedman_test(
+                statistic = out$statistic,
+                df = out$df,
+                p_value = out$p_value
             )
         })
     )

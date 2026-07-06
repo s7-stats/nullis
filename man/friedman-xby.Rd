@@ -25,10 +25,9 @@ None. \code{friedman_def_xby} declares only a \code{base} baseline in its
 
 \section{Grouped Friedman default class}{
 
-No S7 wrapper exists yet. The baseline returns whatever
-\code{friedman_test_group()} returns, unwrapped — a plain list with
-\code{statistic}, \code{df}, \code{p_value}. There is no \code{print()} method and no
-\code{\link[statim:auto_tidy]{statim::auto_tidy()}} dispatch.
+By default, returns a \link{class_friedman_test} object. There is only one
+\code{base} baseline — no variants — so there's nothing else to inherit or
+override.
 }
 
 \examples{
