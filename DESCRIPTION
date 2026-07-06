@@ -20,6 +20,8 @@ Imports:
     cli,
     purrr,
     vctrs
+Remotes:
+    s7-stats/statim
 Suggests:
     testthat (>= 3.0.0),
     lintr
