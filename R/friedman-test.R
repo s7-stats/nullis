@@ -47,7 +47,7 @@ FRIEDMAN_TEST = statim::HTEST_FN(
 #'
 #' @description
 #' An S7 class produced by [FRIEDMAN_TEST] pipelines using
-#' [statim::x_by_b] as the variable mapper `<var_id>`.
+#' [x_by_b] as the variable mapper `<var_id>`.
 #'
 #' Inherits from [statim::class_stat_infer], so [statim::auto_tidy()]
 #' dispatches on it automatically. Downstream packages can use it as a
