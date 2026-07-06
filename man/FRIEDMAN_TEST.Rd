@@ -6,6 +6,51 @@
 \usage{
 FRIEDMAN_TEST(.var_id = NULL, .data = NULL, ...)
 }
+\arguments{
+\item{.var_id}{A variable mapper \verb{<var_id>}. Currently supports
+\code{x_by_b()}, mapping a continuous response, a treatment/grouping
+variable, and a blocking variable. The test executes immediately when
+supplied. Only a single grouping variable is read
+(\code{.proc$group_data[[1]]}) — additional grouping variables are silently
+ignored, not looped over like in \link{KW_TEST}.}
+
+\item{.data}{A data frame. Only used on the standalone path.}
+
+\item{...}{Accepted for pipeline consistency. See the \strong{Supported
+variable mapper} section — the current implementation takes no
+additional arguments.}
+}
+\value{
+A \code{cld_exec} object, or a \code{test_spec} when \code{.var_id = NULL}.
+\code{cld_exec@data} is a plain list with \code{statistic}, \code{df}, and \code{p_value}.
+}
 \description{
-Friedman Rank Sum Test
+\code{FRIEDMAN_TEST()} tests whether treatment effects differ across k >= 2
+related conditions measured on the same block (e.g. repeated measures on
+the same subject, or a randomized block design). It is the rank-based,
+distribution-free analogue to a two-way repeated-measures ANOVA without
+an interaction term.
+}
+\details{
+\code{H0}: there is no difference in treatment effects across blocks.
+\code{H1}: at least one treatment differs from another within blocks.
+}
+\section{Supported variable mapper \verb{<var_id>}s}{
+
+\itemize{
+\item \code{x_by_b()}: blocked Friedman test, single grouping variable only. See
+details from \link{friedman-xby}.
+}
+}
+
+\examples{
+set.seed(123)
+x = rnorm(30)
+g = rep(letters[1:3], 10)
+b = rep(1:10, each = 3)
+FRIEDMAN_TEST(x_by_b(x, g, b))
+
+}
+\seealso{
+\link{friedman-xby}
 }
