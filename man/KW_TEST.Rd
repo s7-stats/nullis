@@ -15,12 +15,16 @@ variable against the same continuous variable.}
 \item{.data}{A data frame. Only used on the standalone path.}
 
 \item{...}{Additional arguments passed to the implementation. See the
-\strong{Arguments by variable mapper} section for the full list per path.}
+\strong{Supported variable mapper} section for the full list per path.}
 }
 \value{
 A \code{cld_exec} object (in \code{\link[statim:conclude]{statim::conclude()}}), a \code{stat_infer_spec}
-object, or a \code{test_spec} when \code{.var_id = NULL}. Depending on the
-implementation you wrote, it returns any class.
+object, or a \code{test_spec} when \code{.var_id = NULL}. \code{kwtest_def_xby}'s
+baseline returns a \link{class_kw_test} object by default; its \code{pairwise}
+variant instead returns a plain list (\code{kw_test}, \code{comps}) with its own
+\code{print} method. \code{kwtest_def_on}'s baseline returns a plain list
+(\code{statistic}, \code{df}, \code{p_value}) with its own \code{print} method — neither
+path shares a class between them.
 }
 \description{
 \code{KW_TEST()} tests whether the distribution of a continuous variable
@@ -34,6 +38,16 @@ i.e. \code{prepare_test(.test = KW_TEST)}.
 the assumption of equal shape). \code{H1}: at least one sample is
 stochastically greater than another.
 }
+\section{Supported variable mapper \verb{<var_id>}s}{
+
+\itemize{
+\item \code{x_by()}: grouped Kruskal-Wallis test, with optional pairwise
+comparisons. See details from \link{kwtest-xby}.
+\item \code{on()}: one-sample Kruskal-Wallis test via a compiled backend. See
+details from \link{kwtest-on}.
+}
+}
+
 \examples{
 set.seed(123)
 x = rcauchy(50, 1, 1.5)
@@ -45,4 +59,7 @@ KW_TEST(x_by(x, g))
 g2 = sample(c("control", "treatment"), size = 50, replace = TRUE)
 KW_TEST(x_by(x, c(g, g2)))
 
+}
+\seealso{
+\link{kwtest-xby}, \link{class_kw_test}, \code{\link[statim:via]{statim::via()}}, \code{\link[statim:conclude]{statim::conclude()}}
 }

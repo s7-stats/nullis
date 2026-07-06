@@ -1,3 +1,51 @@
+#' @title Kruskal-Wallis Test: Grouped (`x_by`)
+#'
+#' @description
+#' The `x_by` implementation tests whether a continuous variable's
+#' distribution differs across the levels of one or more grouping
+#' variables. It accepts one or more grouping variables via [x_by()],
+#' running one Kruskal-Wallis test per grouping variable.
+#'
+#' @section Arguments:
+#' `kwtest_def_xby`'s baseline `fn` takes no arguments beyond `.proc`.
+#' Nothing is currently passed through `...` in [KW_TEST()] or [via()] for
+#' the default path, yet.
+#'
+#' @section Variants:
+#' \describe{
+#'   \item{`"pairwise"`}{Runs the default Kruskal-Wallis test, then all
+#'     pairwise group comparisons using a rank-based z-test with tie
+#'     correction. Accepts one additional argument:
+#'     \describe{
+#'       \item{`p_adj_method`}{P-value adjustment method for the pairwise
+#'         comparisons, passed to [stats::p.adjust()]. Must be one of
+#'         [stats::p.adjust.methods]. Default `"holm"`.}
+#'     }
+#'     Requires at least two groups; errors otherwise.}
+#' }
+#'
+#' @section Grouped Kruskal-Wallis default class:
+#' By default, returns a [class_kw_test] object. The `pairwise` variant
+#' returns a plain list (`kw_test`, `comps`) with its own registered
+#' `print` method — it does not return `class_kw_test`, so it does not
+#' inherit [auto_tidy()] automatically. [making_tidy()] is registered
+#' separately for the `pairwise` path via `.x@data$comps`.
+#'
+#' @examples
+#' set.seed(123)
+#' x = rcauchy(50, 1, 1.5)
+#' g = sample(letters[1:5], size = 50, replace = TRUE)
+#' KW_TEST(x_by(x, g))
+#'
+#' KW_TEST(x_by(x, g)) |> via("pairwise")
+#'
+#' KW_TEST(x_by(x, g)) |> via("pairwise", p_adj_method = "bonferroni")
+#'
+#' @keywords internal
+#' @name kwtest-xby
+#' @family kwtest-implementations
+NULL
+
 kwtest_def_xby = statim::stat_define(
     model_type = x_by,
     impl = statim::agendas(

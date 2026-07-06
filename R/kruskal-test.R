@@ -16,11 +16,21 @@
 #'   variable against the same continuous variable.
 #' @param .data A data frame. Only used on the standalone path.
 #' @param ... Additional arguments passed to the implementation. See the
-#'   **Arguments by variable mapper** section for the full list per path.
+#'   **Supported variable mapper** section for the full list per path.
 #'
-#' @return A `cld_exec` object (in [statim::conclude()]), a `stat_infer_spec`
-#'   object, or a `test_spec` when `.var_id = NULL`. Depending on the
-#'   implementation you wrote, it returns any class.
+#' @return A `cld_exec` object (in [conclude()]), a `stat_infer_spec`
+#'   object, or a `test_spec` when `.var_id = NULL`. `kwtest_def_xby`'s
+#'   baseline returns a [class_kw_test] object by default; its `pairwise`
+#'   variant instead returns a plain list (`kw_test`, `comps`) with its own
+#'   `print` method. `kwtest_def_on`'s baseline returns a plain list
+#'   (`statistic`, `df`, `p_value`) with its own `print` method — neither
+#'   path shares a class between them.
+#'
+#' @section Supported variable mapper `<var_id>`s:
+#' - `x_by()`: grouped Kruskal-Wallis test, with optional pairwise
+#'   comparisons. See details from [kwtest-xby].
+#' - `on()`: one-sample Kruskal-Wallis test via a compiled backend. See
+#'   details from [kwtest-on].
 #'
 #' @examples
 #' set.seed(123)
@@ -32,6 +42,8 @@
 #' # (confirm this call shape against your actual x_by() signature)
 #' g2 = sample(c("control", "treatment"), size = 50, replace = TRUE)
 #' KW_TEST(x_by(x, c(g, g2)))
+#'
+#' @seealso [kwtest-xby], [class_kw_test], [via()], [conclude()]
 #'
 #' @export
 KW_TEST = statim::HTEST_FN(
