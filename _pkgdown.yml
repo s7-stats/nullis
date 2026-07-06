@@ -45,6 +45,7 @@ reference:
   - title: "Base `<class_stat_infer>` classes"
     desc: "Extension of `class_stat_infer` S7 class from `{statim}`"
     contents:
+    - class_friedman_test
     - class_kw_test
 
   - title: "`{nullis}` own `<var_id>` mappers"
