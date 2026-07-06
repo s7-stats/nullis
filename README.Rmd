@@ -35,7 +35,7 @@ The package is not yet on CRAN.
 install.packages("nullis")
 ```
 
-You can install the development version from GitHub. Note that `{nullis}` depends on `{statim}`, which is also not yet on CRAN — `pak` resolves this automatically via the `Remotes` field in `DESCRIPTION`, so a single command handles both:
+You can install the development version from GitHub. Note that `{nullis}` depends on `{statim}`, which is not yet on CRAN. Fortunately, `{pak}` resolves this easily and automatically via the `Remotes` field in `DESCRIPTION`, so a single command handles both:
 
 ```r
 # install.packages("pak")
