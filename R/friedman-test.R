@@ -11,10 +11,7 @@
 #'
 #' @param .var_id A variable mapper `<var_id>`. Currently supports
 #'   `x_by_b()`, mapping a continuous response, a treatment/grouping
-#'   variable, and a blocking variable. The test executes immediately when
-#'   supplied. Only a single grouping variable is read
-#'   (`.proc$group_data[[1]]`) — additional grouping variables are silently
-#'   ignored, not looped over like in [KW_TEST].
+#'   variable, and a blocking variable.
 #' @param .data A data frame. Only used on the standalone path.
 #' @param ... Accepted for pipeline consistency. See the **Supported
 #'   variable mapper** section — the current implementation takes no

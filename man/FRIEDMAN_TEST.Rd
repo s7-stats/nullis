@@ -9,10 +9,7 @@ FRIEDMAN_TEST(.var_id = NULL, .data = NULL, ...)
 \arguments{
 \item{.var_id}{A variable mapper \verb{<var_id>}. Currently supports
 \code{x_by_b()}, mapping a continuous response, a treatment/grouping
-variable, and a blocking variable. The test executes immediately when
-supplied. Only a single grouping variable is read
-(\code{.proc$group_data[[1]]}) — additional grouping variables are silently
-ignored, not looped over like in \link{KW_TEST}.}
+variable, and a blocking variable.}
 
 \item{.data}{A data frame. Only used on the standalone path.}
 
