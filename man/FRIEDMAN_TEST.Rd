@@ -22,7 +22,7 @@ additional arguments.}
 }
 \value{
 A \code{cld_exec} object, or a \code{test_spec} when \code{.var_id = NULL}.
-\code{cld_exec@data} is a plain list with \code{statistic}, \code{df}, and \code{p_value}.
+\code{cld_exec@data} is a \link{class_friedman_test} object.
 }
 \description{
 \code{FRIEDMAN_TEST()} tests whether treatment effects differ across k >= 2
@@ -52,5 +52,5 @@ FRIEDMAN_TEST(x_by_b(x, g, b))
 
 }
 \seealso{
-\link{friedman-xby}
+\link{friedman-xby}, \link{class_friedman_test}
 }

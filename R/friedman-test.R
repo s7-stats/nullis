@@ -21,7 +21,7 @@
 #'   additional arguments.
 #'
 #' @return A `cld_exec` object, or a `test_spec` when `.var_id = NULL`.
-#'   `cld_exec@data` is a plain list with `statistic`, `df`, and `p_value`.
+#'   `cld_exec@data` is a [class_friedman_test] object.
 #'
 #' @section Supported variable mapper `<var_id>`s:
 #' - `x_by_b()`: blocked Friedman test, single grouping variable only. See
@@ -34,7 +34,7 @@
 #' b = rep(1:10, each = 3)
 #' FRIEDMAN_TEST(x_by_b(x, g, b))
 #'
-#' @seealso [friedman-xby]
+#' @seealso [friedman-xby], [class_friedman_test]
 #'
 #' @export
 FRIEDMAN_TEST = statim::HTEST_FN(
