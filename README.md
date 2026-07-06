@@ -13,6 +13,25 @@
 
 **`statim` Extension for Nonparametric Statistics**
 
+## Installation
+
+The package is not yet on CRAN.
+
+``` r
+# Stable version (not yet released)
+install.packages("nullis")
+```
+
+You can install the development version from GitHub. Note that
+`{nullis}` depends on `{statim}`, which is also not yet on CRAN — `pak`
+resolves this automatically via the `Remotes` field in `DESCRIPTION`, so
+a single command handles both:
+
+``` r
+# install.packages("pak")
+pak::pak("s7-stats/nullis")
+```
+
 ## License
 
 MIT + file LICENSE
