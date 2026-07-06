@@ -42,3 +42,62 @@ FRIEDMAN_TEST = statim::HTEST_FN(
     defs = list(friedman_def_xby),
     "Friedman Rank Sum Test"
 )
+
+#' Structured result container for Friedman tests
+#'
+#' @description
+#' An S7 class produced by [FRIEDMAN_TEST] pipelines using
+#' [statim::x_by_b] as the variable mapper `<var_id>`.
+#'
+#' Inherits from [statim::class_stat_infer], so [statim::auto_tidy()]
+#' dispatches on it automatically. Downstream packages can use it as a
+#' `parent` in `S7::new_class()`.
+#'
+#' @usage NULL
+#'
+#' @export
+class_friedman_test = S7::new_class(
+    "friedman_test",
+    parent = statim::class_stat_infer,
+    properties = list(
+        statistic = S7::class_numeric,
+        df = S7::class_numeric,
+        p_value = S7::new_property(
+            class = S7::class_numeric,
+            validator = function(value) {
+                if (any(value <= 0 | value >= 1)) {
+                    "p_value must be between 0 and 1 only."
+                }
+            }
+        )
+    )
+)
+
+S7::method(print, class_friedman_test) = function(x, ...) {
+    vars = x@statistic
+    df = x@df
+    p_value = x@p_value
+
+    stat_out = tibble::tibble(
+        statistic = round(vars, 4),
+        df = as.integer(df),
+        p_value = round(p_value, 4)
+    )
+
+    cli::cat_line(cli::rule(left = "Summary", line = "-"), "\n")
+    tabstats::table_default(
+        stat_out,
+        style_columns = tabstats::td_style(p_value = pval_styler)
+    )
+    cat("\n\n")
+
+    invisible(x)
+}
+
+S7::method(auto_tidy, class_friedman_test) = function(x, ...) {
+    tibble::tibble(
+        statistic = x@statistic,
+        df = x@df,
+        p_value = x@p_value
+    )
+}
