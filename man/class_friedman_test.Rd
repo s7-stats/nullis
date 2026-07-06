@@ -5,7 +5,7 @@
 \title{Structured result container for Friedman tests}
 \description{
 An S7 class produced by \link{FRIEDMAN_TEST} pipelines using
-\link[statim:x_by_b]{statim::x_by_b} as the variable mapper \verb{<var_id>}.
+\link{x_by_b} as the variable mapper \verb{<var_id>}.
 
 Inherits from \link[statim:class_stat_infer]{statim::class_stat_infer}, so \code{\link[statim:auto_tidy]{statim::auto_tidy()}}
 dispatches on it automatically. Downstream packages can use it as a
