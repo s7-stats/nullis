@@ -25,7 +25,8 @@
 #' @examples
 #' set.seed(123)
 #' x = rcauchy(50, 1, 1.5)
-#' KW_TEST(on(x))
+#' y = rcauchy(50, 3, 1.5)
+#' KW_TEST(on(x, y))
 #'
 #' @keywords internal
 #' @name kwtest-on

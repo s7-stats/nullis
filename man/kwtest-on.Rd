@@ -34,7 +34,8 @@ than inheriting \code{\link[statim:auto_tidy]{statim::auto_tidy()}} from \code{c
 \examples{
 set.seed(123)
 x = rcauchy(50, 1, 1.5)
-KW_TEST(on(x))
+y = rcauchy(50, 3, 1.5)
+KW_TEST(on(x, y))
 
 }
 \seealso{
