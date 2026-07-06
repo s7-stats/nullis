@@ -60,7 +60,7 @@ out =
     prepare_test(FRIEDMAN_TEST) |>     # Or just `prepare()`
     conclude()
 
-out
+print(out)
 tidy(out)
 
 }
