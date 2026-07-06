@@ -6,7 +6,7 @@
 \description{
 The \code{x_by} implementation tests whether a continuous variable's
 distribution differs across the levels of one or more grouping
-variables. It accepts one or more grouping variables via \code{\link[statim:x_by]{statim::x_by()}},
+variables. It accepts one or more grouping variables via \code{\link[=x_by]{x_by()}},
 running one Kruskal-Wallis test per grouping variable.
 }
 \section{Arguments}{
