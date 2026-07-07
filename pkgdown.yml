@@ -2,7 +2,7 @@ pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2026-07-06T03:17Z
+last_built: 2026-07-07T04:03Z
 urls:
   reference: https://s7-stats.github.io/nullis/reference
   article: https://s7-stats.github.io/nullis/articles

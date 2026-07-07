@@ -14,6 +14,8 @@ Main functions for nonparametric H-tests
 Extension of `class_stat_infer` S7 class from
 [statim](https://github.com/s7-stats/statim)
 
+- [`class_friedman_test`](https://s7-stats.github.io/nullis/reference/class_friedman_test.md)
+  : Structured result container for Friedman tests
 - [`class_kw_test`](https://s7-stats.github.io/nullis/reference/class_kw_test.md)
   : Structured result container for Kruskal-Wallis test
 
