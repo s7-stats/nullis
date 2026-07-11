@@ -18,7 +18,7 @@ or [`statim::via()`](https://rdrr.io/pkg/statim/man/via.html).
 
 None. `friedman_def_xby` declares only a `base` baseline in its
 [`statim::agendas()`](https://rdrr.io/pkg/statim/man/agendas.html) — no
-[`variant()`](https://rdrr.io/pkg/statim/man/variant.html) entries.
+`variant()` entries.
 
 ## Grouped Friedman default class
 

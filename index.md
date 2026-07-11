@@ -25,6 +25,11 @@ command handles both:
 pak::pak("s7-stats/nullis")
 ```
 
+## Learn More
+
+- [Getting Started with
+  nullis](https://s7-stats.github.io/nullis/articles/nullis.html)
+
 ## License
 
 MIT + file LICENSE

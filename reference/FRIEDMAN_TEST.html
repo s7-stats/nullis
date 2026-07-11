@@ -23,7 +23,8 @@ an interaction term."></head><body>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/nullis.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/s7-stats/nullis" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -103,9 +104,7 @@ details from <a href="friedman-xby.html">friedman-xby</a>.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/s7-stats/statim" class="external-link">statim</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
@@ -124,36 +123,15 @@ details from <a href="friedman-xby.html">friedman-xby</a>.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Piped/Grammar Syntax Form</span></span></span>
 <span class="r-in"><span><span class="va">out</span> <span class="op">=</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/statim/man/layout-define-base.html" class="external-link">define_model</a></span><span class="op">(</span><span class="fu"><a href="x_by_b.html">x_by_b</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span>, <span class="va">b</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/statim/man/prepare-test.html" class="external-link">prepare_test</a></span><span class="op">(</span><span class="va">FRIEDMAN_TEST</span><span class="op">)</span> <span class="op">|&gt;</span>     <span class="co"># Or just `prepare()`</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/statim/man/conclude.html" class="external-link">conclude</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu">define_model</span><span class="op">(</span><span class="fu"><a href="x_by_b.html">x_by_b</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span>, <span class="va">b</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">prepare_test</span><span class="op">(</span><span class="va">FRIEDMAN_TEST</span><span class="op">)</span> <span class="op">|&gt;</span>     <span class="co"># Or just `prepare()`</span></span></span>
+<span class="r-in"><span>    <span class="fu">conclude</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in conclude(prepare_test(define_model(x_by_b(x, g, b)), FRIEDMAN_TEST)):</span> could not find function "conclude"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> == Model ======================================================================= </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Variable Mapper : x_by_b </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Args : x | g &lt;=&gt; [ b ] </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     x_vars : 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     by_vars : 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     block_vars : 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> == Friedman Rank Sum Test ====================================================== </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ──────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   statistic  df  p_value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ──────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1.400    2   <span style="font-style: italic;"> 0.497</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ──────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   statistic    df p_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      1.40     2   0.497</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'out' not found</span>
+<span class="r-in"><span><span class="fu">tidy</span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tidy(out):</span> could not find function "tidy"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

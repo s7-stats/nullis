@@ -21,7 +21,8 @@ running one Kruskal-Wallis test per grouping variable."></head><body>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/nullis.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/s7-stats/nullis" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -109,15 +110,11 @@ separately for the <code>pairwise</code> path via <code>.x@data$comps</code>.</p
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/statim/man/via.html" class="external-link">via</a></span><span class="op">(</span><span class="st">"pairwise"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Can't find method for generic `via(.x, .method)`:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - .x     : &lt;statim::stat_infer_spec&gt;</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - .method: &lt;character&gt;</span>
+<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">via</span><span class="op">(</span><span class="st">"pairwise"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in via(KW_TEST(x_by(x, g)), "pairwise"):</span> could not find function "via"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/statim/man/via.html" class="external-link">via</a></span><span class="op">(</span><span class="st">"pairwise"</span>, p_adj_method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Can't find method for generic `via(.x, .method)`:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - .x     : &lt;statim::stat_infer_spec&gt;</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - .method: &lt;character&gt;</span>
+<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">via</span><span class="op">(</span><span class="st">"pairwise"</span>, p_adj_method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in via(KW_TEST(x_by(x, g)), "pairwise", p_adj_method = "bonferroni"):</span> could not find function "via"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -15,8 +15,8 @@ path.
 
 ## Variants
 
-None. `kwtest_def_on` declares only a `base` baseline — no
-[`variant()`](https://rdrr.io/pkg/statim/man/variant.html) entries.
+None. `kwtest_def_on` declares only a `base` baseline — no `variant()`
+entries.
 
 ## One-sample Kruskal-Wallis default class
 

@@ -8,6 +8,8 @@ Main functions for nonparametric H-tests
   : Friedman Rank Sum Test
 - [`KW_TEST()`](https://s7-stats.github.io/nullis/reference/KW_TEST.md)
   : Kruskal-Wallis rank sum test
+- [`JT_TEST()`](https://s7-stats.github.io/nullis/reference/JT_TEST.md)
+  : Jonckheere-Terpstra Test
 
 ## Base `<class_stat_infer>` classes
 
@@ -18,6 +20,8 @@ Extension of `class_stat_infer` S7 class from
   : Structured result container for Friedman tests
 - [`class_kw_test`](https://s7-stats.github.io/nullis/reference/class_kw_test.md)
   : Structured result container for Kruskal-Wallis test
+- [`class_jt_test`](https://s7-stats.github.io/nullis/reference/class_jt_test.md)
+  : Structured result container for the Jonckheere-Terpstra test
 
 ## `{nullis}` own `<var_id>` mappers
 

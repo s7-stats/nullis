@@ -67,12 +67,8 @@ KW_TEST(x_by(x, g))
 #> 
 
 KW_TEST(x_by(x, g)) |> via("pairwise")
-#> Error: Can't find method for generic `via(.x, .method)`:
-#> - .x     : <statim::stat_infer_spec>
-#> - .method: <character>
+#> Error in via(KW_TEST(x_by(x, g)), "pairwise"): could not find function "via"
 
 KW_TEST(x_by(x, g)) |> via("pairwise", p_adj_method = "bonferroni")
-#> Error: Can't find method for generic `via(.x, .method)`:
-#> - .x     : <statim::stat_infer_spec>
-#> - .method: <character>
+#> Error in via(KW_TEST(x_by(x, g)), "pairwise", p_adj_method = "bonferroni"): could not find function "via"
 ```

@@ -34,10 +34,9 @@ An `x_by_b` / `var_id` S7 object.
 
 Unlike [`statim::x_by()`](https://rdrr.io/pkg/statim/man/x_by.html),
 `x_by_b()` does not support [`I()`](https://rdrr.io/r/base/AsIs.html) or
-[`inlines()`](https://rdrr.io/pkg/statim/man/inlines.html) for inline
-data. Only bare names, [`c()`](https://rdrr.io/r/base/c.html), and
-tidyselect helpers (with `data` supplied) are accepted for `x`, `group`,
-and `block`.
+`inlines()` for inline data. Only bare names,
+[`c()`](https://rdrr.io/r/base/c.html), and tidyselect helpers (with
+`data` supplied) are accepted for `x`, `group`, and `block`.
 
 ## Examples
 

@@ -70,8 +70,6 @@ stochastically greater than another.
 ## Examples
 
 ``` r
-box::use(statim[x_by])
-
 set.seed(123)
 x = rcauchy(50, 1, 1.5)
 g = sample(letters[1:5], size = 50, replace = TRUE)
