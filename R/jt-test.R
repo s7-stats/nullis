@@ -171,7 +171,11 @@ S7::method(print, class_jt_test) = function(x, ...) {
         paste0(x@vars, ": Method")
     )
     detail_values = c(
-        if (is.null(x@approximate)) rep(not_given, length(x@vars)) else as.character(x@approximate),
+        if (is.null(x@approximate)) {
+            rep(not_given, length(x@vars))
+        } else {
+            as.character(x@approximate)
+        },
         if (is.null(x@method)) rep(not_given, length(x@vars)) else x@method
     )
 

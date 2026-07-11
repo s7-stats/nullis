@@ -54,7 +54,11 @@ jttest_def_xby = statim::stat_define(
     model_type = x_by,
     impl = statim::agendas(
         base = statim::baseline(
-            fn = function(.proc, alternative = "two.sided", approximate = FALSE) {
+            fn = function(
+                .proc,
+                alternative = "two.sided",
+                approximate = FALSE
+            ) {
                 tests = lapply(.proc$group_data, function(g) {
                     if (!is.ordered(g)) {
                         cli::cli_abort(c(
@@ -79,7 +83,11 @@ jttest_def_xby = statim::stat_define(
                     variance = vapply(tests, \(t) t$variance, numeric(1)),
                     z_score = vapply(tests, \(t) t$z_score, numeric(1)),
                     p_value = vapply(tests, \(t) t$p_value, numeric(1)),
-                    alternative = vapply(tests, \(t) t$alternative, character(1)),
+                    alternative = vapply(
+                        tests,
+                        \(t) t$alternative,
+                        character(1)
+                    ),
                     approximate = vapply(tests, \(t) t$approximate, logical(1)),
                     method = vapply(tests, \(t) t$method, character(1))
                 )
