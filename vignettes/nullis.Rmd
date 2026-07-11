@@ -1,19 +1,25 @@
 ---
-title: "nullis"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{nullis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: "Getting started with nullis"
+description: "nullis R package for starters"
+output: 
+    rmarkdown::html_vignette:
+        toc: true
+vignette: |
+    %\VignetteIndexEntry{Getting started with nullis}
+    %\VignetteEngine{knitr::rmarkdown}
+    \usepackage[utf8]{inputenc}
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
+
+fansi::set_knit_hooks(knitr::knit_hooks)
+library(statim)
 ```
 
-```{r setup}
-library(nullis)
-```
+## Introduction
+
+Under construction...
