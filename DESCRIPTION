@@ -39,6 +39,8 @@ Collate:
     'friedman-test.R'
     'kruskal-test-defs-on.R'
     'kruskal-test-defs-xby.R'
+    'jt-test-defs-xby.R'
+    'jt-test.R'
     'kruskal-test.R'
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
