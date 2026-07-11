@@ -1,21 +1,21 @@
-S7::method(model_processor, x_by_b) = function(x, data = NULL, ...) {
+S7::method(model_processor, x_by_b) = function(var_id, data = NULL, ...) {
     x_data = if (!is.null(data) && is.data.frame(data)) {
-        cols = tidyselect::eval_select(expr = x@x, data = data)
+        cols = tidyselect::eval_select(expr = var_id@x, data = data)
         data[, cols, drop = FALSE]
     } else {
-        quo_resolver(x@x)
+        quo_resolver(var_id@x)
     }
     group_data = if (!is.null(data) && is.data.frame(data)) {
-        cols = tidyselect::eval_select(expr = x@group, data = data)
+        cols = tidyselect::eval_select(expr = var_id@group, data = data)
         data[, cols, drop = FALSE]
     } else {
-        quo_resolver(x@group)
+        quo_resolver(var_id@group)
     }
     block_data = if (!is.null(data) && is.data.frame(data)) {
-        cols = tidyselect::eval_select(expr = x@block, data = data)
+        cols = tidyselect::eval_select(expr = var_id@block, data = data)
         data[, cols, drop = FALSE]
     } else {
-        quo_resolver(x@block)
+        quo_resolver(var_id@block)
     }
 
     list(x_data = x_data, group_data = group_data, block_data = block_data)
