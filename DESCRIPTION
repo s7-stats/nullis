@@ -25,7 +25,9 @@ Remotes:
 Suggests:
     testthat (>= 3.0.0),
     lintr,
-    box
+    box,
+    knitr,
+    rmarkdown
 Collate:
     'RcppExports.R'
     'nullis-package.R'
