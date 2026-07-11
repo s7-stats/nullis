@@ -21,14 +21,15 @@ navbar:
   type: light
   structure:
     # left: [intro, reference, articles, news]
+    left: [intro, reference, articles]
     right: [search, github, lightswitch, blog]
   components:
-    # intro:
-    #   text: Get started
-    #   href: articles/nullis.html
-    # reference:
-    #   text: Reference
-    #   href: reference/index.html
+    intro:
+      text: Get started
+      href: articles/nullis.html
+    reference:
+      text: Reference
+      href: reference/index.html
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/s7-stats/nullis
