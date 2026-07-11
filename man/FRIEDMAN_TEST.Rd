@@ -41,8 +41,6 @@ details from \link{friedman-xby}.
 }
 
 \examples{
-library(statim)
-
 set.seed(123)
 x = rnorm(30)
 g = rep(letters[1:3], 10)
