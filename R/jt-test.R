@@ -29,8 +29,6 @@
 #'   grouping variable. See details from [jttest-xby].
 #'
 #' @examples
-#' box::use(statim[x_by])
-#'
 #' set.seed(123)
 #' x = rcauchy(50, 1, 1.5)
 #' g = factor(
