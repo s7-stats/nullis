@@ -12,12 +12,7 @@ The package is not yet on CRAN.
 install.packages("nullis")
 ```
 
-You can install the development version from GitHub. Note that
-[nullis](https://github.com/s7-stats/nullis) depends on
-[statim](https://s7-stats.github.io/statim/), which is not yet on CRAN.
-Fortunately, [pak](https://pak.r-lib.org/) resolves this easily and
-automatically via the `Remotes` field in `DESCRIPTION`, so a single
-command handles both:
+You can install the development version from GitHub:
 
 ``` r
 
