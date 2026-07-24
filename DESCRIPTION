@@ -27,7 +27,8 @@ Suggests:
     lintr,
     box,
     knitr,
-    rmarkdown
+    rmarkdown,
+    fansi
 Collate:
     'RcppExports.R'
     'nullis-package.R'
