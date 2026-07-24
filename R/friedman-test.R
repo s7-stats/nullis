@@ -25,6 +25,10 @@
 #'   details from [friedman-xby].
 #'
 #' @examples
+#' box::use(
+#'     statim[define_model, prepare_test, conclude, tidy]
+#' )
+#'
 #' set.seed(123)
 #' x = rnorm(30)
 #' g = rep(letters[1:3], 10)
