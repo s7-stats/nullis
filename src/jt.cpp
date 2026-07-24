@@ -30,10 +30,10 @@ double jt_stat(const NumericVector& x, const IntegerVector& g) {
     std::vector<int> indices(n);
     std::iota(indices.begin(), indices.end(), 0);
     std::stable_sort(
-        indices.begin(), 
+        indices.begin(),
         indices.end(),
-        [&g](int i, int j) { 
-            return g[i] < g[j]; 
+        [&g](int i, int j) {
+            return g[i] < g[j];
         }
     );
 
@@ -168,7 +168,8 @@ jtObject compute_jt(
         std::vector<double> pdf = jt_pdf(group_sizes);
         int jt_int = static_cast<int>(std::round(statistic));
 
-        double p_lower = std::accumulate(pdf.begin(), pdf.begin() + jt_int, 0.0);
+        // double p_lower = std::accumulate(pdf.begin(), pdf.begin() + jt_int, 0.0);
+        double p_lower = std::accumulate(pdf.begin(), pdf.begin() + jt_int + 1, 0.0);
         double p_upper = std::accumulate(pdf.begin() + jt_int, pdf.end(), 0.0);
 
         if (alternative == "two.sided") {

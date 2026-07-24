@@ -133,7 +133,7 @@ S7::method(print, class_jt_test) = function(x, ...) {
         p_value = round(x@p_value, 4),
         alternative = x@alternative
     )
-    if (!is.null(x@z_score)) {
+    if (length(x@z_score) > 0) {
         stat_out = tibble::add_column(
             stat_out,
             z_score = round(x@z_score, 4),
