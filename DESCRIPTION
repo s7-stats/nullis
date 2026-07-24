@@ -18,6 +18,7 @@ Imports:
     BH,
     Rcpp, 
     cli,
+    purrr,
     vctrs
 Remotes:
     s7-stats/statim
