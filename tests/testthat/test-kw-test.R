@@ -148,7 +148,11 @@ test_that("KW_TEST(x_by()) matches kruskal_wallis_group called directly", {
 
     expect_s7_class(piped@data, class_kw_test)
     expect_equal(unname(piped@data@vars), "g")
-    expect_equal(unname(piped@data@statistic), direct$statistic, tolerance = 1e-8)
+    expect_equal(
+        unname(piped@data@statistic),
+        direct$statistic,
+        tolerance = 1e-8
+    )
     expect_equal(unname(piped@data@p_value), direct$p_value, tolerance = 1e-8)
     expect_equal(unname(piped@data@df), direct$df)
 })
@@ -218,12 +222,15 @@ test_that("pairwise variant errors with fewer than two groups", {
     x = rcauchy(20, 1, 1.5)
     g = rep("only_group", 20)
 
-    expect_error({
-        statim::define_model(x_by(x, g)) |>
-            statim::prepare(KW_TEST) |>
-            statim::via("pairwise") |>
-            statim::conclude()
-    }, "At least two groups")
+    expect_error(
+        {
+            statim::define_model(x_by(x, g)) |>
+                statim::prepare(KW_TEST) |>
+                statim::via("pairwise") |>
+                statim::conclude()
+        },
+        "At least two groups"
+    )
 })
 
 test_that("pairwise variant rejects an unsupported p_adj_method", {
@@ -231,12 +238,15 @@ test_that("pairwise variant rejects an unsupported p_adj_method", {
     x = rcauchy(30, 1, 1.5)
     g = sample(letters[1:3], size = 30, replace = TRUE)
 
-    expect_error({
-        statim::define_model(x_by(x, g)) |>
-            statim::prepare(KW_TEST) |>
-            statim::via("pairwise", p_adj_method = "not_a_method") |>
-            statim::conclude()
-    }, "should be one of")
+    expect_error(
+        {
+            statim::define_model(x_by(x, g)) |>
+                statim::prepare(KW_TEST) |>
+                statim::via("pairwise", p_adj_method = "not_a_method") |>
+                statim::conclude()
+        },
+        "should be one of"
+    )
 })
 
 test_that("KW_TEST(on()) matches kruskal_wallis_cpp called directly", {

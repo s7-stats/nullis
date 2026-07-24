@@ -29,9 +29,21 @@ test_that("exact increasing/decreasing p-values are complementary, inclusive of 
     values = c(1, 2, 3, 4, 5, 6)
     groups = c(1L, 1L, 2L, 2L, 3L, 3L)
 
-    p_inc = jonckheere_terpstra_test(values, groups, alternative = "increasing")$p_value
-    p_dec = jonckheere_terpstra_test(values, groups, alternative = "decreasing")$p_value
-    p_two = jonckheere_terpstra_test(values, groups, alternative = "two.sided")$p_value
+    p_inc = jonckheere_terpstra_test(
+        values,
+        groups,
+        alternative = "increasing"
+    )$p_value
+    p_dec = jonckheere_terpstra_test(
+        values,
+        groups,
+        alternative = "decreasing"
+    )$p_value
+    p_two = jonckheere_terpstra_test(
+        values,
+        groups,
+        alternative = "two.sided"
+    )$p_value
 
     expect_equal(p_inc + p_dec, 1 + 1 / 90, tolerance = 1e-8)
     expect_lte(p_two, 1)
