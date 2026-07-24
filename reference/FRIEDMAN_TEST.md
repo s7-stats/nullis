@@ -57,6 +57,10 @@ at least one treatment differs from another within blocks.
 ## Examples
 
 ``` r
+box::use(
+    statim[define_model, prepare_test, conclude, tidy]
+)
+
 set.seed(123)
 x = rnorm(30)
 g = rep(letters[1:3], 10)
@@ -79,10 +83,31 @@ out =
     define_model(x_by_b(x, g, b)) |>
     prepare_test(FRIEDMAN_TEST) |>     # Or just `prepare()`
     conclude()
-#> Error in conclude(prepare_test(define_model(x_by_b(x, g, b)), FRIEDMAN_TEST)): could not find function "conclude"
 
 print(out)
-#> Error: object 'out' not found
+#> 
+#> == Model ======================================================================= 
+#> 
+#> Variable Mapper : x_by_b 
+#> Args : x | g <=> [ b ] 
+#>     x_vars : 1 
+#>     by_vars : 1 
+#>     block_vars : 1 
+#> 
+#> == Friedman Rank Sum Test ====================================================== 
+#> 
+#> -- Summary ---------------------------------------------------------------------
+#> 
+#> ──────────────────────────
+#>   statistic  df  p_value  
+#> ──────────────────────────
+#>     1.400    2    0.497   
+#> ──────────────────────────
+#> 
+#> 
 tidy(out)
-#> Error in tidy(out): could not find function "tidy"
+#> # A tibble: 1 × 3
+#>   statistic    df p_value
+#>       <dbl> <dbl>   <dbl>
+#> 1      1.40     2   0.497
 ```

@@ -76,6 +76,7 @@ g = factor(
     ordered = TRUE
 )
 JT_TEST(x_by(x, g))
+#> jt_int=462 pdf_size=830 pdf_sum=1 statistic=462
 #> -- Summary ---------------------------------------------------------------------
 #> 
 #> ─────────────────────────────────────────────────────────────────────
@@ -97,6 +98,7 @@ JT_TEST(x_by(x, g))
 
 # direction of the trend matters here, unlike Kruskal-Wallis
 JT_TEST(x_by(x, g), alternative = "increasing")
+#> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462
 #> Error: <nullis::jt_test> object properties are invalid:
 #> - @p_value p_value must be between 0 and 1.
 
@@ -108,6 +110,8 @@ g2 = factor(
     ordered = TRUE
 )
 JT_TEST(x_by(x, c(g, g2)))
+#> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462
+#> jt_int=260 pdf_size=617 pdf_sum=1 statistic=260
 #> Error: <nullis::jt_test> object properties are invalid:
 #> - @p_value p_value must be between 0 and 1.
 ```

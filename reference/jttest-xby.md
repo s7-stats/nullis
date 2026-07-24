@@ -53,10 +53,12 @@ g = factor(
     ordered = TRUE
 )
 JT_TEST(x_by(x, g))
+#> jt_int=462 pdf_size=830 pdf_sum=39.9587 statistic=462
 #> Error: <nullis::jt_test> object properties are invalid:
 #> - @p_value p_value must be between 0 and 1.
 
 JT_TEST(x_by(x, g), alternative = "increasing")
+#> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462
 #> Error: <nullis::jt_test> object properties are invalid:
 #> - @p_value p_value must be between 0 and 1.
 
