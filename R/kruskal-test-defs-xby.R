@@ -67,7 +67,10 @@ kwtest_def_xby = statim::stat_define(
             fn = function(.proc, p_adj_method = "holm") {
                 # curr_data = imap(.proc$data, \(x, i) tibble(group = i, value = x))
                 curr_data = .proc$x_data[[1]]
-                group_data = vctrs::vec_cast(.proc$group_data[[1]], character())
+                group_data = vctrs::vec_cast(
+                    .proc$group_data[[1]],
+                    character()
+                )
                 p_adj_method = match.arg(
                     p_adj_method,
                     choices = p.adjust.methods
