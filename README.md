@@ -6,7 +6,8 @@
 <!-- [![CRAN status](https://www.r-pkg.org/badges/version/statim)](https://CRAN.R-project.org/package=statim) -->
 
 [![R-CMD-check](https://github.com/s7-stats/nullis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/s7-stats/nullis/actions/workflows/R-CMD-check.yaml)
-<!-- [![Codecov test coverage](https://codecov.io/gh/s7-stats/statim/graph/badge.svg)](https://app.codecov.io/gh/s7-stats/statim) -->
+[![Codecov test
+coverage](https://codecov.io/gh/s7-stats/nullis/graph/badge.svg)](https://app.codecov.io/gh/s7-stats/nullis)
 <!-- badges: end -->
 
 **`statim` Extension for Nonparametric Statistics**
