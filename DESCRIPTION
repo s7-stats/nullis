@@ -15,10 +15,10 @@ Imports:
     statim,
     S7,
     rlang,
-    BH,
-    Rcpp, 
+    Rcpp,
     cli,
-    purrr,
+    tibble,
+    pillar,
     vctrs
 Remotes:
     s7-stats/statim
@@ -28,7 +28,8 @@ Suggests:
     box,
     knitr,
     rmarkdown,
-    fansi
+    fansi,
+    purrr
 Collate:
     'RcppExports.R'
     'nullis-package.R'
