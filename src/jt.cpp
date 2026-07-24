@@ -167,6 +167,12 @@ jtObject compute_jt(
         method = "exact";
         std::vector<double> pdf = jt_pdf(group_sizes);
         int jt_int = static_cast<int>(std::round(statistic));
+        double pdf_sum = std::accumulate(pdf.begin(), pdf.end(), 0.0);
+        Rcpp::Rcout << "jt_int=" << jt_int
+                    << " pdf_size=" << pdf.size()
+                    << " pdf_sum=" << pdf_sum
+                    << " statistic=" << statistic
+                    << "\n";
 
         // double p_lower = std::accumulate(pdf.begin(), pdf.begin() + jt_int, 0.0);
         double p_lower = std::accumulate(pdf.begin(), pdf.begin() + jt_int + 1, 0.0);
