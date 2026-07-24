@@ -41,14 +41,26 @@ separately for the \code{pairwise} path via \code{.x@data$comps}.
 }
 
 \examples{
+box::use(
+    statim[define_model, prepare, via, conclude]
+)
+
 set.seed(123)
 x = rcauchy(50, 1, 1.5)
 g = sample(letters[1:5], size = 50, replace = TRUE)
 KW_TEST(x_by(x, g))
 
-KW_TEST(x_by(x, g)) |> via("pairwise")
+# Pairwise method (Holm method)
+define_model(x_by(x, g)) |>
+    prepare(KW_TEST) |>
+    via("pairwise") |>
+    conclude()
 
-KW_TEST(x_by(x, g)) |> via("pairwise", p_adj_method = "bonferroni")
+# Pairwise method (Bonferroni method)
+define_model(x_by(x, g)) |>
+    prepare(KW_TEST) |>
+    via("pairwise", p_adj_method = "bonferroni") |>
+    conclude()
 
 }
 \seealso{
