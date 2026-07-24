@@ -54,11 +54,11 @@ g = factor(
 )
 JT_TEST(x_by(x, g))
 #> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1 only.
+#> - @p_value p_value must be between 0 and 1.
 
 JT_TEST(x_by(x, g), alternative = "increasing")
 #> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1 only.
+#> - @p_value p_value must be between 0 and 1.
 
 JT_TEST(x_by(x, g), approximate = TRUE)
 #> -- Summary ---------------------------------------------------------------------

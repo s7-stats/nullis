@@ -98,7 +98,7 @@ JT_TEST(x_by(x, g))
 # direction of the trend matters here, unlike Kruskal-Wallis
 JT_TEST(x_by(x, g), alternative = "increasing")
 #> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1 only.
+#> - @p_value p_value must be between 0 and 1.
 
 # multiple grouping variables -> one test per grouping variable
 # (confirm this call shape against your actual x_by() signature)
@@ -109,5 +109,5 @@ g2 = factor(
 )
 JT_TEST(x_by(x, c(g, g2)))
 #> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1 only.
+#> - @p_value p_value must be between 0 and 1.
 ```
