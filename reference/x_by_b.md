@@ -1,8 +1,9 @@
 # Compare a variable by group given block
 
 An extended version of
-[`statim::x_by()`](https://rdrr.io/pkg/statim/man/x_by.html) which adds
-`block`, used on statistical inference pipeline that applies blocking
+[`statim::x_by()`](https://s7-stats.github.io/statim/reference/x_by.html)
+which adds `block`, used on statistical inference pipeline that applies
+blocking
 
 ## Usage
 
@@ -32,7 +33,8 @@ An `x_by_b` / `var_id` S7 object.
 
 ## Details
 
-Unlike [`statim::x_by()`](https://rdrr.io/pkg/statim/man/x_by.html),
+Unlike
+[`statim::x_by()`](https://s7-stats.github.io/statim/reference/x_by.html),
 `x_by_b()` does not support [`I()`](https://rdrr.io/r/base/AsIs.html) or
 `inlines()` for inline data. Only bare names,
 [`c()`](https://rdrr.io/r/base/c.html), and tidyselect helpers (with

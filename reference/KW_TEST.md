@@ -17,10 +17,10 @@ KW_TEST(.var_id = NULL, .data = NULL, ...)
 - .var_id:
 
   A variable mapper `<var_id>`. Currently supports
-  [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html). When supplied,
-  the test executes immediately. If `.var_id` maps multiple grouping
-  variables, one Kruskal-Wallis test runs per grouping variable against
-  the same continuous variable.
+  [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html).
+  When supplied, the test executes immediately. If `.var_id` maps
+  multiple grouping variables, one Kruskal-Wallis test runs per grouping
+  variable against the same continuous variable.
 
 - .data:
 
@@ -34,8 +34,8 @@ KW_TEST(.var_id = NULL, .data = NULL, ...)
 ## Value
 
 A `cld_exec` object (in
-[`statim::conclude()`](https://rdrr.io/pkg/statim/man/conclude.html)), a
-`stat_infer_spec` object, or a `test_spec` when `.var_id = NULL`.
+[`statim::conclude()`](https://s7-stats.github.io/statim/reference/conclude.html)),
+a `stat_infer_spec` object, or a `test_spec` when `.var_id = NULL`.
 `kwtest_def_xby`'s baseline returns a
 [class_kw_test](https://s7-stats.github.io/nullis/reference/class_kw_test.md)
 object by default; its `pairwise` variant instead returns a plain list
@@ -51,21 +51,22 @@ stochastically greater than another.
 
 ## Supported variable mapper `<var_id>`s
 
-- [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html): grouped
-  Kruskal-Wallis test, with optional pairwise comparisons. See details
-  from
+- [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html):
+  grouped Kruskal-Wallis test, with optional pairwise comparisons. See
+  details from
   [kwtest-xby](https://s7-stats.github.io/nullis/reference/kwtest-xby.md).
 
-- [`on()`](https://rdrr.io/pkg/statim/man/on.html): one-sample
-  Kruskal-Wallis test via a compiled backend. See details from
+- [`on()`](https://s7-stats.github.io/statim/reference/on.html):
+  one-sample Kruskal-Wallis test via a compiled backend. See details
+  from
   [kwtest-on](https://s7-stats.github.io/nullis/reference/kwtest-on.md).
 
 ## See also
 
 [kwtest-xby](https://s7-stats.github.io/nullis/reference/kwtest-xby.md),
 [class_kw_test](https://s7-stats.github.io/nullis/reference/class_kw_test.md),
-[`statim::via()`](https://rdrr.io/pkg/statim/man/via.html),
-[`statim::conclude()`](https://rdrr.io/pkg/statim/man/conclude.html)
+[`statim::via()`](https://s7-stats.github.io/statim/reference/via.html),
+[`statim::conclude()`](https://s7-stats.github.io/statim/reference/conclude.html)
 
 ## Examples
 

@@ -19,11 +19,11 @@ JT_TEST(.var_id = NULL, .data = NULL, ...)
 - .var_id:
 
   A variable mapper `<var_id>`. Currently supports
-  [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html). When supplied,
-  the test executes immediately. If `.var_id` maps multiple grouping
-  variables, one Jonckheere-Terpstra test runs per grouping variable
-  against the same continuous variable. Each grouping variable must be
-  an ordered factor — see
+  [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html).
+  When supplied, the test executes immediately. If `.var_id` maps
+  multiple grouping variables, one Jonckheere-Terpstra test runs per
+  grouping variable against the same continuous variable. Each grouping
+  variable must be an ordered factor — see
   [jttest-xby](https://s7-stats.github.io/nullis/reference/jttest-xby.md).
 
 - .data:
@@ -40,8 +40,8 @@ JT_TEST(.var_id = NULL, .data = NULL, ...)
 ## Value
 
 A `cld_exec` object (in
-[`statim::conclude()`](https://rdrr.io/pkg/statim/man/conclude.html)), a
-`stat_infer_spec` object, or a `test_spec` when `.var_id = NULL`.
+[`statim::conclude()`](https://s7-stats.github.io/statim/reference/conclude.html)),
+a `stat_infer_spec` object, or a `test_spec` when `.var_id = NULL`.
 `jttest_def_xby` always returns a
 [class_jt_test](https://s7-stats.github.io/nullis/reference/class_jt_test.md)
 object.
@@ -53,17 +53,17 @@ stochastically ordered in the direction given by `alternative`.
 
 ## Supported variable mapper `<var_id>`s
 
-- [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html): grouped
-  Jonckheere-Terpstra test against an ordered grouping variable. See
-  details from
+- [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html):
+  grouped Jonckheere-Terpstra test against an ordered grouping variable.
+  See details from
   [jttest-xby](https://s7-stats.github.io/nullis/reference/jttest-xby.md).
 
 ## See also
 
 [jttest-xby](https://s7-stats.github.io/nullis/reference/jttest-xby.md),
 [class_jt_test](https://s7-stats.github.io/nullis/reference/class_jt_test.md),
-[`statim::via()`](https://rdrr.io/pkg/statim/man/via.html),
-[`statim::conclude()`](https://rdrr.io/pkg/statim/man/conclude.html)
+[`statim::via()`](https://s7-stats.github.io/statim/reference/via.html),
+[`statim::conclude()`](https://s7-stats.github.io/statim/reference/conclude.html)
 
 ## Examples
 

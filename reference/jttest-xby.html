@@ -48,7 +48,7 @@ Jonckheere-Terpstra test per grouping variable."></head><body>
     <div class="ref-description section level2">
     <p>The <code>x_by</code> implementation tests whether a continuous variable trends
 monotonically across the levels of one or more grouping variables. It
-accepts one or more grouping variables via <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>, running one
+accepts one or more grouping variables via <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>, running one
 Jonckheere-Terpstra test per grouping variable.</p>
     </div>
 
@@ -75,7 +75,7 @@ is <code>FALSE</code>.</p></dd>
     <h2 id="grouping-requirement">Grouping requirement<a class="anchor" aria-label="anchor" href="#grouping-requirement"></a></h2>
 
 
-<p>Every grouping variable passed to <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code> must be an <strong>ordered
+<p>Every grouping variable passed to <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code> must be an <strong>ordered
 factor</strong>. Jonckheere-Terpstra tests a <em>directional</em> trend across group
 levels — unlike Kruskal-Wallis, group order changes what the test
 means, so an unordered factor or plain character vector is refused
@@ -86,7 +86,7 @@ rather than silently sorted alphabetically.</p>
 
 
 <p>Always returns a <a href="class_jt_test.html">class_jt_test</a> object, which inherits
-<a href="https://rdrr.io/pkg/statim/man/class_stat_infer.html" class="external-link">statim::class_stat_infer</a> and so picks up <code><a href="https://rdrr.io/pkg/statim/man/auto_tidy.html" class="external-link">statim::auto_tidy()</a></code> automatically.
+<a href="https://s7-stats.github.io/statim/reference/class_stat_infer.html" class="external-link">statim::class_stat_infer</a> and so picks up <code><a href="https://s7-stats.github.io/statim/reference/auto_tidy.html" class="external-link">statim::auto_tidy()</a></code> automatically.
 There is no separate <code>making_tidy()</code> registration needed for this path.</p>
     </div>
 
@@ -99,15 +99,15 @@ There is no separate <code>making_tidy()</code> registration needed for this pat
 <span class="r-in"><span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    ordered <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1 only.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, alternative <span class="op">=</span> <span class="st">"increasing"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, alternative <span class="op">=</span> <span class="st">"increasing"</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1 only.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, approximate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, approximate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>

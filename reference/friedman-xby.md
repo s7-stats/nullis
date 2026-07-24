@@ -12,13 +12,14 @@ blocking variable via
 `friedman_def_xby`'s baseline `fn` takes no arguments beyond `.proc` —
 nothing is currently passed through `...` in
 [`FRIEDMAN_TEST()`](https://s7-stats.github.io/nullis/reference/FRIEDMAN_TEST.md)
-or [`statim::via()`](https://rdrr.io/pkg/statim/man/via.html).
+or
+[`statim::via()`](https://s7-stats.github.io/statim/reference/via.html).
 
 ## Variants
 
 None. `friedman_def_xby` declares only a `base` baseline in its
-[`statim::agendas()`](https://rdrr.io/pkg/statim/man/agendas.html) — no
-`variant()` entries.
+[`statim::agendas()`](https://s7-stats.github.io/statim/reference/agendas.html)
+— no `variant()` entries.
 
 ## Grouped Friedman default class
 

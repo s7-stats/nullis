@@ -71,7 +71,7 @@ i.e. <code>prepare_test(.test = JT_TEST)</code>.</p>
 
 
 <dl><dt id="arg--var-id">.var_id<a class="anchor" aria-label="anchor" href="#arg--var-id"></a></dt>
-<dd><p>A variable mapper <code>&lt;var_id&gt;</code>. Currently supports <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>.
+<dd><p>A variable mapper <code>&lt;var_id&gt;</code>. Currently supports <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>.
 When supplied, the test executes immediately. If <code>.var_id</code> maps
 multiple grouping variables, one Jonckheere-Terpstra test runs per
 grouping variable against the same continuous variable. Each grouping
@@ -89,7 +89,7 @@ variable must be an ordered factor — see <a href="jttest-xby.html">jttest-xby<
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>cld_exec</code> object (in <code><a href="https://rdrr.io/pkg/statim/man/conclude.html" class="external-link">statim::conclude()</a></code>), a <code>stat_infer_spec</code>
+    <p>A <code>cld_exec</code> object (in <code><a href="https://s7-stats.github.io/statim/reference/conclude.html" class="external-link">statim::conclude()</a></code>), a <code>stat_infer_spec</code>
 object, or a <code>test_spec</code> when <code>.var_id = NULL</code>. <code>jttest_def_xby</code>
 always returns a <a href="class_jt_test.html">class_jt_test</a> object.</p>
     </div>
@@ -102,12 +102,12 @@ stochastically ordered in the direction given by <code>alternative</code>.</p>
     <h2 id="supported-variable-mapper-lt-var-id-gt-s">Supported variable mapper <code>&lt;var_id&gt;</code>s<a class="anchor" aria-label="anchor" href="#supported-variable-mapper-lt-var-id-gt-s"></a></h2>
 
 
-<ul><li><p><code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>: grouped Jonckheere-Terpstra test against an ordered
+<ul><li><p><code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>: grouped Jonckheere-Terpstra test against an ordered
 grouping variable. See details from <a href="jttest-xby.html">jttest-xby</a>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="jttest-xby.html">jttest-xby</a>, <a href="class_jt_test.html">class_jt_test</a>, <code><a href="https://rdrr.io/pkg/statim/man/via.html" class="external-link">statim::via()</a></code>, <code><a href="https://rdrr.io/pkg/statim/man/conclude.html" class="external-link">statim::conclude()</a></code></p></div>
+    <div class="dont-index"><p><a href="jttest-xby.html">jttest-xby</a>, <a href="class_jt_test.html">class_jt_test</a>, <code><a href="https://s7-stats.github.io/statim/reference/via.html" class="external-link">statim::via()</a></code>, <code><a href="https://s7-stats.github.io/statim/reference/conclude.html" class="external-link">statim::conclude()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -119,7 +119,7 @@ grouping variable. See details from <a href="jttest-xby.html">jttest-xby</a>.</p
 <span class="r-in"><span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    ordered <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
@@ -140,7 +140,7 @@ grouping variable. See details from <a href="jttest-xby.html">jttest-xby</a>.</p
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># direction of the trend matters here, unlike Kruskal-Wallis</span></span></span>
-<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, alternative <span class="op">=</span> <span class="st">"increasing"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, alternative <span class="op">=</span> <span class="st">"increasing"</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1 only.</span>
 <span class="r-in"><span></span></span>
@@ -151,7 +151,7 @@ grouping variable. See details from <a href="jttest-xby.html">jttest-xby</a>.</p
 <span class="r-in"><span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    ordered <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">g2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">JT_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">g2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1 only.</span>
 <span class="r-in"><span></span></span>

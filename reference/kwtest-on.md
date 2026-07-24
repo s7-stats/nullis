@@ -2,7 +2,8 @@
 
 The `on` implementation runs a Kruskal-Wallis test via a compiled C++
 backend (`kruskal_wallis_cpp()`) directly on `.proc$data`, without going
-through an R-level [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html)
+through an R-level
+[`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html)
 grouping split.
 
 ## Arguments
@@ -10,8 +11,8 @@ grouping split.
 `kwtest_def_on`'s baseline `fn` takes no arguments beyond `.proc` —
 nothing is passed through `...` in
 [`KW_TEST()`](https://s7-stats.github.io/nullis/reference/KW_TEST.md) or
-[`statim::via()`](https://rdrr.io/pkg/statim/man/via.html) for this
-path.
+[`statim::via()`](https://s7-stats.github.io/statim/reference/via.html)
+for this path.
 
 ## Variants
 
@@ -22,14 +23,15 @@ entries.
 
 No S7 wrapper. The baseline returns whatever `kruskal_wallis_cpp()`
 returns, unwrapped, a plain list with `statistic`, `df`, `p_value`.
-Unlike [`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html), this path
-does **not** return
+Unlike
+[`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html), this
+path does **not** return
 [class_kw_test](https://s7-stats.github.io/nullis/reference/class_kw_test.md).
 It has its own `print` method (a `tibble` with `H Statistic`,
 `Degrees of Freedom`, `p-value` columns) and its own registered
-[`statim::making_tidy()`](https://rdrr.io/pkg/statim/man/making_tidy.html)
+[`statim::making_tidy()`](https://s7-stats.github.io/statim/reference/making_tidy.html)
 entry (`tibble::as_tibble(.x@data)`), rather than inheriting
-[`statim::auto_tidy()`](https://rdrr.io/pkg/statim/man/auto_tidy.html)
+[`statim::auto_tidy()`](https://s7-stats.github.io/statim/reference/auto_tidy.html)
 from `class_kw_test`.
 
 ## See also

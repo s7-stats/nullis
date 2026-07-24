@@ -3,8 +3,8 @@
 The `x_by` implementation tests whether a continuous variable trends
 monotonically across the levels of one or more grouping variables. It
 accepts one or more grouping variables via
-[`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html), running one
-Jonckheere-Terpstra test per grouping variable.
+[`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html),
+running one Jonckheere-Terpstra test per grouping variable.
 
 ## Arguments
 
@@ -25,10 +25,10 @@ compiled `jonckheere_terpstra_test()` C++ backend:
 ## Grouping requirement
 
 Every grouping variable passed to
-[`x_by()`](https://rdrr.io/pkg/statim/man/x_by.html) must be an
-**ordered factor**. Jonckheere-Terpstra tests a *directional* trend
-across group levels — unlike Kruskal-Wallis, group order changes what
-the test means, so an unordered factor or plain character vector is
+[`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html) must
+be an **ordered factor**. Jonckheere-Terpstra tests a *directional*
+trend across group levels — unlike Kruskal-Wallis, group order changes
+what the test means, so an unordered factor or plain character vector is
 refused rather than silently sorted alphabetically.
 
 ## Grouped Jonckheere-Terpstra default class
@@ -36,9 +36,9 @@ refused rather than silently sorted alphabetically.
 Always returns a
 [class_jt_test](https://s7-stats.github.io/nullis/reference/class_jt_test.md)
 object, which inherits
-[statim::class_stat_infer](https://rdrr.io/pkg/statim/man/class_stat_infer.html)
+[statim::class_stat_infer](https://s7-stats.github.io/statim/reference/class_stat_infer.html)
 and so picks up
-[`statim::auto_tidy()`](https://rdrr.io/pkg/statim/man/auto_tidy.html)
+[`statim::auto_tidy()`](https://s7-stats.github.io/statim/reference/auto_tidy.html)
 automatically. There is no separate `making_tidy()` registration needed
 for this path.
 

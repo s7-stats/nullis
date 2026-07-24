@@ -65,7 +65,7 @@ i.e. <code>prepare_test(.test = KW_TEST)</code>.</p>
 
 
 <dl><dt id="arg--var-id">.var_id<a class="anchor" aria-label="anchor" href="#arg--var-id"></a></dt>
-<dd><p>A variable mapper <code>&lt;var_id&gt;</code>. Currently supports <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>.
+<dd><p>A variable mapper <code>&lt;var_id&gt;</code>. Currently supports <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>.
 When supplied, the test executes immediately. If <code>.var_id</code> maps
 multiple grouping variables, one Kruskal-Wallis test runs per grouping
 variable against the same continuous variable.</p></dd>
@@ -82,7 +82,7 @@ variable against the same continuous variable.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>cld_exec</code> object (in <code><a href="https://rdrr.io/pkg/statim/man/conclude.html" class="external-link">statim::conclude()</a></code>), a <code>stat_infer_spec</code>
+    <p>A <code>cld_exec</code> object (in <code><a href="https://s7-stats.github.io/statim/reference/conclude.html" class="external-link">statim::conclude()</a></code>), a <code>stat_infer_spec</code>
 object, or a <code>test_spec</code> when <code>.var_id = NULL</code>. <code>kwtest_def_xby</code>'s
 baseline returns a <a href="class_kw_test.html">class_kw_test</a> object by default; its <code>pairwise</code>
 variant instead returns a plain list (<code>kw_test</code>, <code>comps</code>) with its own
@@ -100,14 +100,14 @@ stochastically greater than another.</p>
     <h2 id="supported-variable-mapper-lt-var-id-gt-s">Supported variable mapper <code>&lt;var_id&gt;</code>s<a class="anchor" aria-label="anchor" href="#supported-variable-mapper-lt-var-id-gt-s"></a></h2>
 
 
-<ul><li><p><code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>: grouped Kruskal-Wallis test, with optional pairwise
+<ul><li><p><code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>: grouped Kruskal-Wallis test, with optional pairwise
 comparisons. See details from <a href="kwtest-xby.html">kwtest-xby</a>.</p></li>
-<li><p><code><a href="https://rdrr.io/pkg/statim/man/on.html" class="external-link">on()</a></code>: one-sample Kruskal-Wallis test via a compiled backend. See
+<li><p><code><a href="https://s7-stats.github.io/statim/reference/on.html" class="external-link">on()</a></code>: one-sample Kruskal-Wallis test via a compiled backend. See
 details from <a href="kwtest-on.html">kwtest-on</a>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="kwtest-xby.html">kwtest-xby</a>, <a href="class_kw_test.html">class_kw_test</a>, <code><a href="https://rdrr.io/pkg/statim/man/via.html" class="external-link">statim::via()</a></code>, <code><a href="https://rdrr.io/pkg/statim/man/conclude.html" class="external-link">statim::conclude()</a></code></p></div>
+    <div class="dont-index"><p><a href="kwtest-xby.html">kwtest-xby</a>, <a href="class_kw_test.html">class_kw_test</a>, <code><a href="https://s7-stats.github.io/statim/reference/via.html" class="external-link">statim::via()</a></code>, <code><a href="https://s7-stats.github.io/statim/reference/conclude.html" class="external-link">statim::conclude()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -115,7 +115,7 @@ details from <a href="kwtest-on.html">kwtest-on</a>.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html" class="external-link">rcauchy</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">1</span>, <span class="fl">1.5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">g</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, size <span class="op">=</span> <span class="fl">50</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">KW_TEST</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">KW_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
@@ -129,7 +129,7 @@ details from <a href="kwtest-on.html">kwtest-on</a>.</p></li>
 <span class="r-in"><span><span class="co"># multiple grouping variables -&gt; one test per grouping variable</span></span></span>
 <span class="r-in"><span><span class="co"># (confirm this call shape against your actual x_by() signature)</span></span></span>
 <span class="r-in"><span><span class="va">g2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"treatment"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">50</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">KW_TEST</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">g2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">KW_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">g2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>

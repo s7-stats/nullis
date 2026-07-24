@@ -14,7 +14,7 @@ install.packages("nullis")
 
 You can install the development version from GitHub. Note that
 [nullis](https://github.com/s7-stats/nullis) depends on
-[statim](https://github.com/s7-stats/statim), which is not yet on CRAN.
+[statim](https://s7-stats.github.io/statim/), which is not yet on CRAN.
 Fortunately, [pak](https://pak.r-lib.org/) resolves this easily and
 automatically via the `Remotes` field in `DESCRIPTION`, so a single
 command handles both:
@@ -64,7 +64,7 @@ Main functions for nonparametric H-tests
 ## Base `<class_stat_infer>` classes
 
 Extension of `class_stat_infer` S7 class from
-[statim](https://github.com/s7-stats/statim)
+[statim](https://s7-stats.github.io/statim/)
 
 - [`class_friedman_test`](https://s7-stats.github.io/nullis/reference/class_friedman_test.md)
   : Structured result container for Friedman tests

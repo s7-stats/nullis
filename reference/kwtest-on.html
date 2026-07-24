@@ -46,7 +46,7 @@ through an R-level x_by() grouping split."></head><body>
     <div class="ref-description section level2">
     <p>The <code>on</code> implementation runs a Kruskal-Wallis test via a compiled C++
 backend (<code>kruskal_wallis_cpp()</code>) directly on <code>.proc$data</code>, without going
-through an R-level <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code> grouping split.</p>
+through an R-level <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code> grouping split.</p>
     </div>
 
 
@@ -55,7 +55,7 @@ through an R-level <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" clas
 
 
 <p><code>kwtest_def_on</code>'s baseline <code>fn</code> takes no arguments beyond <code>.proc</code> —
-nothing is passed through <code>...</code> in <code><a href="KW_TEST.html">KW_TEST()</a></code> or <code><a href="https://rdrr.io/pkg/statim/man/via.html" class="external-link">statim::via()</a></code> for this path.</p>
+nothing is passed through <code>...</code> in <code><a href="KW_TEST.html">KW_TEST()</a></code> or <code><a href="https://s7-stats.github.io/statim/reference/via.html" class="external-link">statim::via()</a></code> for this path.</p>
     </div>
     <div class="section level2">
     <h2 id="variants">Variants<a class="anchor" aria-label="anchor" href="#variants"></a></h2>
@@ -70,11 +70,11 @@ entries.</p>
 
 <p>No S7 wrapper. The baseline returns whatever <code>kruskal_wallis_cpp()</code>
 returns, unwrapped, a plain list with <code>statistic</code>, <code>df</code>, <code>p_value</code>.
-Unlike <code><a href="https://rdrr.io/pkg/statim/man/x_by.html" class="external-link">x_by()</a></code>, this path does <strong>not</strong> return <a href="class_kw_test.html">class_kw_test</a>. It has
+Unlike <code><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by()</a></code>, this path does <strong>not</strong> return <a href="class_kw_test.html">class_kw_test</a>. It has
 its own <code>print</code> method (a <code>tibble</code> with <code>H Statistic</code>,
 <code>Degrees of Freedom</code>, <code>p-value</code> columns) and its own registered
-<code><a href="https://rdrr.io/pkg/statim/man/making_tidy.html" class="external-link">statim::making_tidy()</a></code> entry (<code>tibble::as_tibble(.x@data)</code>), rather
-than inheriting <code><a href="https://rdrr.io/pkg/statim/man/auto_tidy.html" class="external-link">statim::auto_tidy()</a></code> from <code>class_kw_test</code>.</p>
+<code><a href="https://s7-stats.github.io/statim/reference/making_tidy.html" class="external-link">statim::making_tidy()</a></code> entry (<code>tibble::as_tibble(.x@data)</code>), rather
+than inheriting <code><a href="https://s7-stats.github.io/statim/reference/auto_tidy.html" class="external-link">statim::auto_tidy()</a></code> from <code>class_kw_test</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -87,7 +87,7 @@ than inheriting <code><a href="https://rdrr.io/pkg/statim/man/auto_tidy.html" cl
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html" class="external-link">rcauchy</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">1</span>, <span class="fl">1.5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html" class="external-link">rcauchy</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">3</span>, <span class="fl">1.5</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/statim/man/on.html" class="external-link">on</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="KW_TEST.html">KW_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/on.html" class="external-link">on</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   H Statistic  Degrees of Freedom  p-value  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
