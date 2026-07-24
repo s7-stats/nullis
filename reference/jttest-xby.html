@@ -100,14 +100,44 @@ There is no separate <code>making_tidy()</code> registration needed for this pat
 <span class="r-in"><span>    ordered <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> jt_int=462 pdf_size=830 pdf_sum=39.9587 statistic=462</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   vars   mean    variance  statistic  z_score  p_value  alternative  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    g    414.500  3143.250     462      0.847   <span style="font-style: italic;"> 0.404</span>    two.sided   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Details ---------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>running command 'tput cols' had status 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ----------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   g: Approximate :   FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   g: Method      :   exact</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ----------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, alternative <span class="op">=</span> <span class="st">"increasing"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> &lt;nullis::jt_test&gt; object properties are invalid:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> - @p_value p_value must be between 0 and 1.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   vars   mean    variance  statistic  z_score  p_value  alternative  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    g    414.500  3143.250     462      0.847   <span style="font-style: italic;"> 0.202</span>   increasing   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ─────────────────────────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Details ---------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>running command 'tput cols' had status 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ----------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   g: Approximate :   FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   g: Method      :   exact</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ----------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="JT_TEST.html">JT_TEST</a></span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, approximate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>

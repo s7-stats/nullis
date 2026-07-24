@@ -76,7 +76,6 @@ g = factor(
     ordered = TRUE
 )
 JT_TEST(x_by(x, g))
-#> jt_int=462 pdf_size=830 pdf_sum=1 statistic=462
 #> -- Summary ---------------------------------------------------------------------
 #> 
 #> ─────────────────────────────────────────────────────────────────────
@@ -98,9 +97,24 @@ JT_TEST(x_by(x, g))
 
 # direction of the trend matters here, unlike Kruskal-Wallis
 JT_TEST(x_by(x, g), alternative = "increasing")
-#> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462
-#> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1.
+#> -- Summary ---------------------------------------------------------------------
+#> 
+#> ─────────────────────────────────────────────────────────────────────
+#>   vars   mean    variance  statistic  z_score  p_value  alternative  
+#> ─────────────────────────────────────────────────────────────────────
+#>    g    414.500  3143.250     462      0.847    0.202   increasing   
+#> ─────────────────────────────────────────────────────────────────────
+#> 
+#> 
+#> -- Details ---------------------------------------------------------------------
+#> 
+#> Warning: running command 'tput cols' had status 2
+#> ----------------------------
+#>   g: Approximate :   FALSE
+#>   g: Method      :   exact
+#> ----------------------------
+#> 
+#> 
 
 # multiple grouping variables -> one test per grouping variable
 # (confirm this call shape against your actual x_by() signature)
@@ -110,8 +124,25 @@ g2 = factor(
     ordered = TRUE
 )
 JT_TEST(x_by(x, c(g, g2)))
-#> jt_int=462 pdf_size=830 pdf_sum=30.7937 statistic=462
-#> jt_int=260 pdf_size=617 pdf_sum=1 statistic=260
-#> Error: <nullis::jt_test> object properties are invalid:
-#> - @p_value p_value must be between 0 and 1.
+#> -- Summary ---------------------------------------------------------------------
+#> 
+#> ─────────────────────────────────────────────────────────────────────
+#>   vars   mean    variance  statistic  z_score  p_value  alternative  
+#> ─────────────────────────────────────────────────────────────────────
+#>    g    414.500  3143.250     462      0.847    0.404    two.sided   
+#>    g2   308.000  2618.000     260     -0.938    0.356    two.sided   
+#> ─────────────────────────────────────────────────────────────────────
+#> 
+#> 
+#> -- Details ---------------------------------------------------------------------
+#> 
+#> Warning: running command 'tput cols' had status 2
+#> -----------------------------
+#>   g: Approximate  :   FALSE
+#>   g2: Approximate :   FALSE
+#>   g: Method       :   exact
+#>   g2: Method      :   exact
+#> -----------------------------
+#> 
+#> 
 ```
