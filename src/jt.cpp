@@ -173,7 +173,8 @@ jtObject compute_jt(
         double p_upper = std::accumulate(pdf.begin() + jt_int, pdf.end(), 0.0);
 
         if (alternative == "two.sided") {
-            p_value = 2.0 * std::min(p_lower, p_upper);
+            double one_tail = (statistic > final_mean) ? p_upper : p_lower;
+            p_value = std::min(2.0 * one_tail, 1.0);
         } else if (alternative == "increasing") {
             p_value = p_upper;
         } else if (alternative == "decreasing") {

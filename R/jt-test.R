@@ -93,8 +93,11 @@ class_jt_test = S7::new_class(
         p_value = S7::new_property(
             class = S7::class_numeric,
             validator = function(value) {
+                if (anyNA(value)) {
+                    return("p_value must not contain missing values.")
+                }
                 if (any(value <= 0 | value >= 1)) {
-                    "p_value must be between 0 and 1 only."
+                    "p_value must be between 0 and 1."
                 }
             }
         ),
