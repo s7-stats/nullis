@@ -99,7 +99,9 @@ mmdtest_def_xby = statim::stat_define(
 
                 vars = names(.proc$group_data)
 
-                if (!isFALSE(display_var) && !(display_var %in% seq_along(vars))) {
+                if (
+                    !isFALSE(display_var) && !(display_var %in% seq_along(vars))
+                ) {
                     cli::cli_abort(
                         "{.arg display_var} must be an index between 1 and {length(vars)}, or FALSE to hide the table."
                     )
@@ -109,7 +111,11 @@ mmdtest_def_xby = statim::stat_define(
                     mood_median_test_group(.proc$x_data[[1]], g, custom_median)
                 })
 
-                cont_tab = if (isFALSE(display_var)) list() else list(tests[[display_var]]$cont_table)
+                cont_tab = if (isFALSE(display_var)) {
+                    list()
+                } else {
+                    list(tests[[display_var]]$cont_table)
+                }
 
                 class_median_test(
                     vars = vars,
