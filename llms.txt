@@ -2,6 +2,9 @@
 
 **`statim` Extension for Nonparametric Statistics**
 
+This package extends [statim](https://s7-stats.github.io/statim/)
+tooling for nonparametric tests.
+
 ## Installation
 
 The package is not yet on CRAN.
