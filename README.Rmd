@@ -26,6 +26,8 @@ desc = setNames(as.list(desc), colnames(desc))
 
 **`r desc$Title`**
 
+This package extends `{statim}` tooling for nonparametric tests. 
+
 ## Installation
 
 The package is not yet on CRAN.

@@ -11,6 +11,8 @@
 
 **`statim` Extension for Nonparametric Statistics**
 
+This package extends `{statim}` tooling for nonparametric tests.
+
 ## Installation
 
 The package is not yet on CRAN.
