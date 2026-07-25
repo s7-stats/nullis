@@ -6,26 +6,22 @@ population median differs across the levels of a grouping variable.
 ## Arguments
 
 `mmdtest_def_xby`'s baseline `fn` takes `.proc` plus an optional
-`custom_median` and `display_ct`, forwarded through `...` in
-[`MEDIAN_TEST()`](https://s7-stats.github.io/nullis/reference/MEDIAN_TEST.md)
-or
-[`statim::via()`](https://s7-stats.github.io/statim/reference/via.html).
-The baseline requires exactly one grouping variable in
-`.proc$group_data` and errors otherwise, pointing to the `multi`
-variant.
+`custom_median` forwarded through `...` in
+[`MEDIAN_TEST()`](https://s7-stats.github.io/nullis/reference/MEDIAN_TEST.md).
 
 ## Variants
 
 - `"multi"`:
 
-  Runs one Mood's median test per grouping variable when
-  `.proc$group_data` holds more than one. Accepts `custom_median`
-  (applied identically to every grouping variable's test) and
-  `display_var` — a 1-based index (default `1L`, the first grouping
-  variable) choosing which grouping variable's contingency table is
-  computed and shown; pass `display_var = FALSE` to skip it entirely.
-  Only the selected variable's table is retained on the returned object
-  — re-run with a different `display_var` to inspect another one.
+  Runs one Mood's median test per grouping variable when `group` from
+  [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html)
+  selects multiple variables. Accepts `custom_median` (applied
+  identically to every grouping variable's test) and `display_var`, a
+  1-based index (default `1L`, the first grouping variable) choosing
+  which grouping variable's contingency table is computed and shown;
+  pass `display_var = FALSE` to skip it entirely. Only the selected
+  variable's table is retained on the returned object, so re-run with a
+  different `display_var` to inspect another one.
 
 ## Grouped Mood's Median Test default class
 
@@ -82,10 +78,41 @@ MEDIAN_TEST(x_by(x, g1))
 # show g1's contingency table
 define_model(x_by(x, g1)) |>
     prepare(MEDIAN_TEST) |>
-    via("base", display_ct = TRUE) |>
     conclude()
-#> Error in `method(via, list(statim::test_lazy, class_character))`(.x = <object>,     .method = "base", ...): No variant "base" registered for model type "x_by".
-#> ℹ Available variant: "multi".
+#> 
+#> == Model ======================================================================= 
+#> 
+#> Variable Mapper : x_by 
+#> Args : x | g1 
+#>     x_vars : 1 
+#>     by_vars : 1 
+#> 
+#> == Mood's Median Test ========================================================== 
+#> 
+#> -- Summary ---------------------------------------------------------------------
+#> 
+#> ────────────────────────────────
+#>   vars  statistic  df  p_value  
+#> ────────────────────────────────
+#>    g1     3.066    4    0.547   
+#> ────────────────────────────────
+#> 
+#> 
+#> -- Contingency Table -----------------------------------------------------------
+#> 
+#>                            Cross Tabulation: x by y              
+#>               ───────────────────────────────────────────────────
+#>                                            y              
+#>               ───────────────────────────────────────────────────
+#>                 x                  d   e    c   a    b    TOTAL  
+#>               ───────────────────────────────────────────────────
+#>                 > Median (1.04)    4   5    3   5    8     25    
+#>               
+#>                 <= Median (1.04)   5   6    5   6    3     25    
+#>               ───────────────────────────────────────────────────
+#>                 TOTAL              9   11   8   11   11    50    
+#>               ───────────────────────────────────────────────────
+#> 
 
 # more than one grouping variable requires "multi"; shows g2's table
 define_model(x_by(x, g1, g2)) |>

@@ -23,8 +23,8 @@ MEDIAN_TEST(.var_id = NULL, .data = NULL, ...)
   [`on()`](https://s7-stats.github.io/statim/reference/on.html). When
   supplied, the test executes immediately.
   [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html) with
-  more than one grouping variable requires `via("multi")`; see the
-  **Supported variable mapper** section.
+  more than one grouping variable requires `via("multi")` (see the
+  **Supported variable mapper** section).
 
 - .data:
 
@@ -34,19 +34,17 @@ MEDIAN_TEST(.var_id = NULL, .data = NULL, ...)
 
   Additional arguments passed to the implementation: `custom_median` (a
   hypothesized median to split on, instead of the sample's own grand
-  median), accepted on every path, and `display_ct` (show the
-  contingency table in [`print()`](https://rdrr.io/r/base/print.html);
-  default `FALSE`), accepted on `base` (both
+  median), accepted on every path, accepted on default (which is the
+  "base", both
   [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html) and
   [`on()`](https://s7-stats.github.io/statim/reference/on.html)).
   [`x_by()`](https://s7-stats.github.io/statim/reference/x_by.html)'s
-  `multi` variant instead accepts `display_var` — an index or
+  `multi` variant instead accepts `display_var` (whether an index or
   grouping-variable name choosing which variable's table to compute and
-  show (`FALSE` to skip it) — since with several grouping variables
-  there's a choice to make that
-  `base`/[`on()`](https://s7-stats.github.io/statim/reference/on.html)
-  never have. See the **Supported variable mapper** section for the full
-  list per path.
+  show; that the default (base) or
+  [`on()`](https://s7-stats.github.io/statim/reference/on.html) never
+  have. See the **Supported variable mapper** section for the full list
+  per path.
 
 ## Value
 
@@ -59,7 +57,7 @@ all return a
 object. On `multi`, every grouping variable's test runs and its
 `statistic`/`df`/`p_value`/`median` are kept, but only the
 `display_var`-selected variable's contingency table is retained in
-`cont_tab` — the others' tables are discarded. On the
+`cont_tab`, others' tables are discarded. On the
 [`on()`](https://s7-stats.github.io/statim/reference/on.html) path,
 `vars` is fixed to `"on"` since there is no grouping variable to label.
 
