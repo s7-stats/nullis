@@ -40,6 +40,7 @@ reference:
   - title: H-test functions
     desc: Main functions for nonparametric H-tests
     contents:
+    - MEDIAN_TEST
     - FRIEDMAN_TEST
     - KW_TEST
     - JT_TEST
@@ -47,6 +48,7 @@ reference:
   - title: "Base `<class_stat_infer>` classes"
     desc: "Extension of `class_stat_infer` S7 class from `{statim}`"
     contents:
+    - class_median_test
     - class_friedman_test
     - class_kw_test
     - class_jt_test
