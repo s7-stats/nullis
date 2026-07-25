@@ -9,20 +9,18 @@ MEDIAN_TEST(.var_id = NULL, .data = NULL, ...)
 \arguments{
 \item{.var_id}{A variable mapper \verb{<var_id>}. Supports \code{x_by()} and
 \code{on()}. When supplied, the test executes immediately. \code{x_by()} with
-more than one grouping variable requires \code{via("multi")}; see the
-\strong{Supported variable mapper} section.}
+more than one grouping variable requires \code{via("multi")} (see the
+\strong{Supported variable mapper} section).}
 
 \item{.data}{A data frame. Only used on the standalone path.}
 
 \item{...}{Additional arguments passed to the implementation:
 \code{custom_median} (a hypothesized median to split on, instead of the
-sample's own grand median), accepted on every path, and \code{display_ct}
-(show the contingency table in \code{print()}; default \code{FALSE}), accepted
-on \code{base} (both \code{x_by()} and \code{on()}). \code{x_by()}'s \code{multi} variant
-instead accepts \code{display_var} — an index or grouping-variable name
-choosing which variable's table to compute and show (\code{FALSE} to skip
-it) — since with several grouping variables there's a choice to make
-that \code{base}/\code{on()} never have. See the \strong{Supported variable mapper}
+sample's own grand median), accepted on every path, accepted
+on default (which is the "base", both \code{x_by()} and \code{on()}).
+\code{x_by()}'s \code{multi} variant instead accepts \code{display_var} (whether an index
+or grouping-variable name choosing which variable's table to compute and show;
+that the default (base) or \code{on()} never have. See the \strong{Supported variable mapper}
 section for the full list per path.}
 }
 \value{
@@ -32,7 +30,7 @@ object, or a \code{test_spec} when \code{.var_id = NULL}. \code{mmdtest_def_xby}
 \link{class_median_test} object. On \code{multi}, every grouping variable's test
 runs and its \code{statistic}/\code{df}/\code{p_value}/\code{median} are kept, but only
 the \code{display_var}-selected variable's contingency table is retained
-in \code{cont_tab} — the others' tables are discarded. On the \code{on()} path,
+in \code{cont_tab}, others' tables are discarded. On the \code{on()} path,
 \code{vars} is fixed to \code{"on"} since there is no grouping variable to
 label.
 }

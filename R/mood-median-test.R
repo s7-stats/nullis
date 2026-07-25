@@ -13,18 +13,16 @@
 #'
 #' @param .var_id A variable mapper `<var_id>`. Supports `x_by()` and
 #'   `on()`. When supplied, the test executes immediately. `x_by()` with
-#'   more than one grouping variable requires `via("multi")`; see the
-#'   **Supported variable mapper** section.
+#'   more than one grouping variable requires `via("multi")` (see the
+#'   **Supported variable mapper** section).
 #' @param .data A data frame. Only used on the standalone path.
 #' @param ... Additional arguments passed to the implementation:
 #'   `custom_median` (a hypothesized median to split on, instead of the
-#'   sample's own grand median), accepted on every path, and `display_ct`
-#'   (show the contingency table in `print()`; default `FALSE`), accepted
-#'   on `base` (both `x_by()` and `on()`). `x_by()`'s `multi` variant
-#'   instead accepts `display_var` — an index or grouping-variable name
-#'   choosing which variable's table to compute and show (`FALSE` to skip
-#'   it) — since with several grouping variables there's a choice to make
-#'   that `base`/`on()` never have. See the **Supported variable mapper**
+#'   sample's own grand median), accepted on every path, accepted
+#'   on default (which is the "base", both `x_by()` and `on()`).
+#'   `x_by()`'s `multi` variant instead accepts `display_var` (whether an index
+#'   or grouping-variable name choosing which variable's table to compute and show;
+#'   that the default (base) or `on()` never have. See the **Supported variable mapper**
 #'   section for the full list per path.
 #'
 #' @return A `cld_exec` object (in [conclude()]), a `stat_infer_spec`
@@ -33,7 +31,7 @@
 #'   [class_median_test] object. On `multi`, every grouping variable's test
 #'   runs and its `statistic`/`df`/`p_value`/`median` are kept, but only
 #'   the `display_var`-selected variable's contingency table is retained
-#'   in `cont_tab` — the others' tables are discarded. On the `on()` path,
+#'   in `cont_tab`, others' tables are discarded. On the `on()` path,
 #'   `vars` is fixed to `"on"` since there is no grouping variable to
 #'   label.
 #'
@@ -139,7 +137,7 @@ S7::method(print, class_median_test) = function(x, ...) {
 
     # ---- Contingency Table ----
     # base and on() only ever produce a single-element cont_tab, so
-    # display_ct is a plain on/off toggle over cont_tab[[1]] — there's
+    # display_ct is a plain on/off toggle over cont_tab[[1]], there's
     # nothing to select between here. multi's per-variable selection
     # happens before construction (see mmdtest_def_xby's `multi` variant)
     # and never reaches this class.
