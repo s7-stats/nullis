@@ -115,9 +115,31 @@ define_model(x_by(x, g1)) |>
 #> 
 
 # more than one grouping variable requires "multi"; shows g2's table
-define_model(x_by(x, g1, g2)) |>
+define_model(x_by(x, c(g1, g2))) |>
     prepare(MEDIAN_TEST) |>
     via("multi", display_var = 2L) |>
     conclude()
-#> Error in x_by(x, g1, g2): unused argument (g2)
+#> 
+#> == Model ======================================================================= 
+#> 
+#> Variable Mapper : x_by 
+#> Args : x | g1, g2 
+#>     x_vars : 1 
+#>     by_vars : 2 
+#> 
+#> == Mood's Median Test · multi ================================================== 
+#> 
+#> -- Summary ---------------------------------------------------------------------
+#> 
+#> ────────────────────────────────
+#>   vars  statistic  df  p_value  
+#> ────────────────────────────────
+#>    g1     3.066    4    0.547   
+#>    g2     5.128    1    0.024   
+#> ────────────────────────────────
+#> 
+#> 
+#> -- Contingency Table -----------------------------------------------------------
+#> 
+#> Error in dimnames(x) <- dn: length of 'dimnames' [1] not equal to array extent
 ```

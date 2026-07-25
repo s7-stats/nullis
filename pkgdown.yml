@@ -3,7 +3,7 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   nullis: nullis.html
-last_built: 2026-07-25T12:16Z
+last_built: 2026-07-25T12:21Z
 urls:
   reference: https://s7-stats.github.io/nullis/reference
   article: https://s7-stats.github.io/nullis/articles
