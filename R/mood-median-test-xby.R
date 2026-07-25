@@ -46,7 +46,7 @@
 #'     conclude()
 #'
 #' # more than one grouping variable requires "multi"; shows g2's table
-#' define_model(x_by(x, g1, g2)) |>
+#' define_model(x_by(x, c(g1, g2))) |>
 #'     prepare(MEDIAN_TEST) |>
 #'     via("multi", display_var = 2L) |>
 #'     conclude()
