@@ -10,23 +10,20 @@ population median differs across the levels of a grouping variable.
 \section{Arguments}{
 
 \code{mmdtest_def_xby}'s baseline \code{fn} takes \code{.proc} plus an optional
-\code{custom_median} and \code{display_ct}, forwarded through \code{...} in
-\code{\link[=MEDIAN_TEST]{MEDIAN_TEST()}} or \code{\link[statim:via]{statim::via()}}. The baseline requires exactly one grouping
-variable in \code{.proc$group_data} and errors otherwise, pointing to the
-\code{multi} variant.
+\code{custom_median} forwarded through \code{...} in \code{\link[=MEDIAN_TEST]{MEDIAN_TEST()}}.
 }
 
 \section{Variants}{
 
 \describe{
 \item{\code{"multi"}}{Runs one Mood's median test per grouping variable
-when \code{.proc$group_data} holds more than one. Accepts \code{custom_median}
+when \code{group} from \code{x_by()} selects multiple variables. Accepts \code{custom_median}
 (applied identically to every grouping variable's test) and
-\code{display_var} — a 1-based index (default \code{1L}, the first grouping
+\code{display_var}, a 1-based index (default \code{1L}, the first grouping
 variable) choosing which grouping variable's contingency table is
 computed and shown; pass \code{display_var = FALSE} to skip it entirely.
 Only the selected variable's table is retained on the returned
-object — re-run with a different \code{display_var} to inspect another
+object, so re-run with a different \code{display_var} to inspect another
 one.}
 }
 }
@@ -55,7 +52,6 @@ MEDIAN_TEST(x_by(x, g1))
 # show g1's contingency table
 define_model(x_by(x, g1)) |>
     prepare(MEDIAN_TEST) |>
-    via("base", display_ct = TRUE) |>
     conclude()
 
 # more than one grouping variable requires "multi"; shows g2's table

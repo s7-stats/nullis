@@ -6,21 +6,18 @@
 #'
 #' @section Arguments:
 #' `mmdtest_def_xby`'s baseline `fn` takes `.proc` plus an optional
-#' `custom_median` and `display_ct`, forwarded through `...` in
-#' [MEDIAN_TEST()] or [via()]. The baseline requires exactly one grouping
-#' variable in `.proc$group_data` and errors otherwise, pointing to the
-#' `multi` variant.
+#' `custom_median` forwarded through `...` in [MEDIAN_TEST()].
 #'
 #' @section Variants:
 #' \describe{
 #'   \item{`"multi"`}{Runs one Mood's median test per grouping variable
-#'     when `.proc$group_data` holds more than one. Accepts `custom_median`
+#'     when `group` from `x_by()` selects multiple variables. Accepts `custom_median`
 #'     (applied identically to every grouping variable's test) and
-#'     `display_var` — a 1-based index (default `1L`, the first grouping
+#'     `display_var`, a 1-based index (default `1L`, the first grouping
 #'     variable) choosing which grouping variable's contingency table is
 #'     computed and shown; pass `display_var = FALSE` to skip it entirely.
 #'     Only the selected variable's table is retained on the returned
-#'     object — re-run with a different `display_var` to inspect another
+#'     object, so re-run with a different `display_var` to inspect another
 #'     one.}
 #' }
 #'
@@ -46,7 +43,6 @@
 #' # show g1's contingency table
 #' define_model(x_by(x, g1)) |>
 #'     prepare(MEDIAN_TEST) |>
-#'     via("base", display_ct = TRUE) |>
 #'     conclude()
 #'
 #' # more than one grouping variable requires "multi"; shows g2's table
