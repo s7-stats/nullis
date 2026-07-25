@@ -25,3 +25,11 @@ kruskal_wallis_group <- function(x, g) {
     .Call(`_nullis_kruskal_wallis_group`, x, g)
 }
 
+mood_median_test_cpp <- function(groups, custom_median = NULL) {
+    .Call(`_nullis_mood_median_test_cpp`, groups, custom_median)
+}
+
+mood_median_test_group <- function(x, g, custom_median = NULL) {
+    .Call(`_nullis_mood_median_test_group`, x, g, custom_median)
+}
+

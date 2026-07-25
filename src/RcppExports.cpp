@@ -84,6 +84,31 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mood_median_test_cpp
+List mood_median_test_cpp(const List& groups, Nullable<double> custom_median);
+RcppExport SEXP _nullis_mood_median_test_cpp(SEXP groupsSEXP, SEXP custom_medianSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type groups(groupsSEXP);
+    Rcpp::traits::input_parameter< Nullable<double> >::type custom_median(custom_medianSEXP);
+    rcpp_result_gen = Rcpp::wrap(mood_median_test_cpp(groups, custom_median));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mood_median_test_group
+List mood_median_test_group(const NumericVector& x, const CharacterVector& g, Nullable<double> custom_median);
+RcppExport SEXP _nullis_mood_median_test_group(SEXP xSEXP, SEXP gSEXP, SEXP custom_medianSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const CharacterVector& >::type g(gSEXP);
+    Rcpp::traits::input_parameter< Nullable<double> >::type custom_median(custom_medianSEXP);
+    rcpp_result_gen = Rcpp::wrap(mood_median_test_group(x, g, custom_median));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_nullis_friedman_test_matrix", (DL_FUNC) &_nullis_friedman_test_matrix, 1},
@@ -92,6 +117,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_nullis_jonckheere_terpstra_test_groups", (DL_FUNC) &_nullis_jonckheere_terpstra_test_groups, 3},
     {"_nullis_kruskal_wallis_cpp", (DL_FUNC) &_nullis_kruskal_wallis_cpp, 1},
     {"_nullis_kruskal_wallis_group", (DL_FUNC) &_nullis_kruskal_wallis_group, 2},
+    {"_nullis_mood_median_test_cpp", (DL_FUNC) &_nullis_mood_median_test_cpp, 2},
+    {"_nullis_mood_median_test_group", (DL_FUNC) &_nullis_mood_median_test_group, 3},
     {NULL, NULL, 0}
 };
 
