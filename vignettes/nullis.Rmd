@@ -15,11 +15,27 @@ knitr::opts_chunk$set(
     collapse = TRUE,
     comment = "#>"
 )
-
 fansi::set_knit_hooks(knitr::knit_hooks)
 library(statim)
 ```
 
 ## Introduction
 
-Under construction...
+`{nullis}` is an extension of `{statim}` dedicated for nonparametric statistics
+
+## Current 
+
+Here are the collection of Hypothesis tests under nonparametric statistics implemented in `{nullis}`:
+
+1.  Mood's median test (`MEDIAN_TEST()`)
+2.  Friedman's Rank Sum Test (`FRIEDMAN_TEST()`)
+3.  Kruskal-Wallis H test (`KW_TEST()`)
+4.  Jonckheere-Terpstra Test (`JT_TEST()`)
+
+On the other hand, here are the collection of regression models:
+
+
+
+
+
+
