@@ -35,6 +35,8 @@ double quickselect_median(NumericVector x) {
     return x_copy[k];
 }
 
+// row 1 = value <= med (below-or-equal), row 0 = value > med (above).
+// compute_mood's k == 1 branch must match this orientation.
 IntegerMatrix create_contingency_table(const double* values, const int* group_indices, int n_total, int k, double med) {
     IntegerMatrix cont_table(2, k);
     for (int i = 0; i < n_total; ++i) {
@@ -177,12 +179,16 @@ List mood_median_test_group(const NumericVector& x, const CharacterVector& g, Nu
     int n_total = x.size();
 
     std::unordered_map<Rcpp::String, int> group_map;
+    std::vector<std::string> group_names;
+
     for (int i = 0; i < n_total; ++i) {
-        if (group_map.find(g[i]) == group_map.end()) {
-            group_map[g[i]] = static_cast<int>(group_map.size());
+        Rcpp::String label = g[i];
+        if (group_map.find(label) == group_map.end()) {
+            group_map[label] = static_cast<int>(group_names.size());
+            group_names.push_back(label);
         }
     }
-    int k = static_cast<int>(group_map.size());
+    int k = static_cast<int>(group_names.size());
 
     std::vector<double> values(x.begin(), x.end());
     std::vector<int> group_indices(n_total);
@@ -199,11 +205,14 @@ List mood_median_test_group(const NumericVector& x, const CharacterVector& g, Nu
 
     mdtObject mdt = compute_mood(values.data(), group_indices.data(), n_total, k, med);
 
+    IntegerMatrix cont_table = mdt.cont_tab;
+    Rcpp::colnames(cont_table) = Rcpp::wrap(group_names);
+
     return List::create(
         Named("statistic") = mdt.statistic,
         Named("df") = mdt.df,
         Named("p_value") = mdt.p_value,
-        Named("cont_table") = mdt.cont_tab,
+        Named("cont_table") = cont_table,
         Named("median") = mdt.median,
         Named("n_groups") = k
     );
