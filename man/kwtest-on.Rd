@@ -2,7 +2,7 @@
 % Please edit documentation in R/kruskal-test-defs-on.R
 \name{kwtest-on}
 \alias{kwtest-on}
-\title{Kruskal-Wallis Test: One-Sample (\code{on})}
+\title{k-independent Samples Kruskal-Wallis Test (\code{on})}
 \description{
 The \code{on} implementation runs a Kruskal-Wallis test via a compiled C++
 backend (\code{kruskal_wallis_cpp()}) directly on \code{.proc$data}, without going
@@ -20,7 +20,7 @@ None. \code{kwtest_def_on} declares only a \code{base} baseline — no \code{var
 entries.
 }
 
-\section{One-sample Kruskal-Wallis default class}{
+\section{k-independent Samples Kruskal-Wallis default class}{
 
 No S7 wrapper. The baseline returns whatever \code{kruskal_wallis_cpp()}
 returns, unwrapped, a plain list with \code{statistic}, \code{df}, \code{p_value}.

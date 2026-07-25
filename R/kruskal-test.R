@@ -29,7 +29,7 @@
 #' @section Supported variable mapper `<var_id>`s:
 #' - `x_by()`: grouped Kruskal-Wallis test, with optional pairwise
 #'   comparisons. See details from [kwtest-xby].
-#' - `on()`: one-sample Kruskal-Wallis test via a compiled backend. See
+#' - `on()`: k-independent samples Kruskal-Wallis test via a compiled backend. See
 #'   details from [kwtest-on].
 #'
 #' @examples

@@ -43,7 +43,7 @@ stochastically greater than another.
 \itemize{
 \item \code{x_by()}: grouped Kruskal-Wallis test, with optional pairwise
 comparisons. See details from \link{kwtest-xby}.
-\item \code{on()}: one-sample Kruskal-Wallis test via a compiled backend. See
+\item \code{on()}: k-independent samples Kruskal-Wallis test via a compiled backend. See
 details from \link{kwtest-on}.
 }
 }

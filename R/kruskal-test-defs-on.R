@@ -1,4 +1,4 @@
-#' @title Kruskal-Wallis Test: One-Sample (`on`)
+#' @title k-independent Samples Kruskal-Wallis Test (`on`)
 #'
 #' @description
 #' The `on` implementation runs a Kruskal-Wallis test via a compiled C++
@@ -13,7 +13,7 @@
 #' None. `kwtest_def_on` declares only a `base` baseline — no `variant()`
 #' entries.
 #'
-#' @section One-sample Kruskal-Wallis default class:
+#' @section k-independent Samples Kruskal-Wallis default class:
 #' No S7 wrapper. The baseline returns whatever `kruskal_wallis_cpp()`
 #' returns, unwrapped, a plain list with `statistic`, `df`, `p_value`.
 #' Unlike `x_by()`, this path does **not** return [class_kw_test]. It has
