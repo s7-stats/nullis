@@ -136,18 +136,25 @@ S7::method(print, class_median_test) = function(x, ...) {
     cat("\n\n")
 
     # ---- Contingency Table ----
-    # base and on() only ever produce a single-element cont_tab, so
-    # display_ct is a plain on/off toggle over cont_tab[[1]], there's
-    # nothing to select between here. multi's per-variable selection
-    # happens before construction (see mmdtest_def_xby's `multi` variant)
-    # and never reaches this class.
     if (x@display_ct) {
         cli::cat_line(cli::rule(left = "Contingency Table", line = "-"), "\n")
         cont_table = x@cont_tab[[1]]
-        rownames(cont_table) = c(
-            paste0("> Median ", "(", round(x@median, digits = 2), ")"),
-            paste0("<= Median ", "(", round(x@median, digits = 2), ")")
-        )
+
+        # x@median has one entry per grouping variable. On base/on() that's
+        # always length 1, so it unambiguously belongs to the one retained
+        # table. On multi it's length k, and nothing on the object records
+        # which of those k the one retained table corresponds to — so we
+        # can't safely pick a single median value to label it with without
+        # risking mislabeling it with the wrong variable's median.
+        if (length(x@median) == 1) {
+            rownames(cont_table) = c(
+                paste0("> Median ", "(", round(x@median, digits = 2), ")"),
+                paste0("<= Median ", "(", round(x@median, digits = 2), ")")
+            )
+        } else {
+            rownames(cont_table) = c("> Median", "<= Median")
+        }
+
         tabstats::cross_table(
             cont_table,
             layout = FALSE,
