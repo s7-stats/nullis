@@ -4,6 +4,8 @@
 
 Main functions for nonparametric H-tests
 
+- [`MEDIAN_TEST()`](https://s7-stats.github.io/nullis/reference/MEDIAN_TEST.md)
+  : Mood's Median Test
 - [`FRIEDMAN_TEST()`](https://s7-stats.github.io/nullis/reference/FRIEDMAN_TEST.md)
   : Friedman Rank Sum Test
 - [`KW_TEST()`](https://s7-stats.github.io/nullis/reference/KW_TEST.md)
@@ -16,6 +18,8 @@ Main functions for nonparametric H-tests
 Extension of `class_stat_infer` S7 class from
 [statim](https://s7-stats.github.io/statim/)
 
+- [`class_median_test`](https://s7-stats.github.io/nullis/reference/class_median_test.md)
+  : Structured S7 container for Mood's median test
 - [`class_friedman_test`](https://s7-stats.github.io/nullis/reference/class_friedman_test.md)
   : Structured result container for Friedman tests
 - [`class_kw_test`](https://s7-stats.github.io/nullis/reference/class_kw_test.md)

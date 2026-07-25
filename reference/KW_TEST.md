@@ -57,8 +57,8 @@ stochastically greater than another.
   [kwtest-xby](https://s7-stats.github.io/nullis/reference/kwtest-xby.md).
 
 - [`on()`](https://s7-stats.github.io/statim/reference/on.html):
-  one-sample Kruskal-Wallis test via a compiled backend. See details
-  from
+  k-independent samples Kruskal-Wallis test via a compiled backend. See
+  details from
   [kwtest-on](https://s7-stats.github.io/nullis/reference/kwtest-on.md).
 
 ## See also

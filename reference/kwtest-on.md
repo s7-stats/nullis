@@ -1,4 +1,4 @@
-# Kruskal-Wallis Test: One-Sample (`on`)
+# k-independent Samples Kruskal-Wallis Test (`on`)
 
 The `on` implementation runs a Kruskal-Wallis test via a compiled C++
 backend (`kruskal_wallis_cpp()`) directly on `.proc$data`, without going
@@ -19,7 +19,7 @@ for this path.
 None. `kwtest_def_on` declares only a `base` baseline — no `variant()`
 entries.
 
-## One-sample Kruskal-Wallis default class
+## k-independent Samples Kruskal-Wallis default class
 
 No S7 wrapper. The baseline returns whatever `kruskal_wallis_cpp()`
 returns, unwrapped, a plain list with `statistic`, `df`, `p_value`.
