@@ -85,6 +85,26 @@ test_that("mood_median_test_cpp is invariant to group order", {
     expect_equal(forward_out$p_value, shuffled_out$p_value, tolerance = 1e-8)
 })
 
+test_that("mood_median_test_cpp handles an unnamed list without erroring", {
+    set.seed(7)
+    g1 = rnorm(15)
+    g2 = rnorm(15, mean = 2)
+
+    unnamed_out = mood_median_test_cpp(list(g1, g2))
+
+    expect_null(colnames(unnamed_out$cont_table))
+})
+
+test_that("mood_median_test_cpp attaches colnames when the list is named", {
+    set.seed(7)
+    g1 = rnorm(15)
+    g2 = rnorm(15, mean = 2)
+
+    named_out = mood_median_test_cpp(list(x1 = g1, x2 = g2))
+
+    expect_equal(colnames(named_out$cont_table), c("x1", "x2"))
+})
+
 test_that("mood_median_test_group matches mood_median_test_cpp with equivalent groups", {
     set.seed(4)
     x = c(rnorm(15), rnorm(15, mean = 2), rnorm(15, mean = -1))
@@ -313,7 +333,7 @@ test_that("MEDIAN_TEST(x_by()) errors on more than one grouping variable without
     )
 })
 
-test_that("MEDIAN_TEST(x_by()) |> via('multi') runs one test per grouping variable", {
+test_that("'multi' variant runs one test per grouping variable", {
     set.seed(123)
     x = rcauchy(50, 1, 1.5)
     g1 = sample(letters[1:5], size = 50, replace = TRUE)
@@ -414,14 +434,14 @@ test_that("MEDIAN_TEST(on()) matches mood_median_test_cpp called directly", {
     expect_equal(piped@data@df, direct$df)
 })
 
-test_that("MEDIAN_TEST(on())'s display_ct defaults to FALSE", {
+test_that("MEDIAN_TEST(on())'s display_ct defaults to TRUE", {
     set.seed(123)
     x = rcauchy(30, 1, 1.5)
     y = rcauchy(30, 3, 1.5)
 
     piped = MEDIAN_TEST(on(x, y))
 
-    expect_false(piped@data@display_ct)
+    expect_true(piped@data@display_ct)
 })
 
 test_that("MEDIAN_TEST(on()) respects custom_median", {
