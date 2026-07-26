@@ -161,9 +161,11 @@ List mood_median_test_cpp(const List& groups, Nullable<double> custom_median = R
     mdtObject mdt = compute_mood(values.data(), group_indices.data(), n_total, k, med);
 
     IntegerMatrix cont_table = mdt.cont_tab;
-    CharacterVector group_names = groups.names();
-    if (group_names.size() == k) {
-        Rcpp::colnames(cont_table) = group_names;
+    if (groups.hasAttribute("names")) {
+        CharacterVector group_names = groups.names();
+        if (group_names.size() == k) {
+            Rcpp::colnames(cont_table) = group_names;
+        }
     }
 
     return List::create(
