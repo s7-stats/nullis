@@ -20,7 +20,8 @@ Imports:
     tibble,
     pillar,
     tidyselect, 
-    vctrs
+    vctrs,
+    purrr
 Remotes:
     s7-stats/statim
 Suggests:
@@ -29,8 +30,7 @@ Suggests:
     box,
     knitr,
     rmarkdown,
-    fansi,
-    purrr
+    fansi
 Collate:
     'RcppExports.R'
     'nullis-package.R'
