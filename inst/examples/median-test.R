@@ -24,6 +24,12 @@ cat("Mood's Median Test: \n\n")
 conclude(init)
 cat("\n\n")
 
+cat("Pairwise Mood's Median Test: \n\n")
+init |>
+    via("pairwise") |>
+    conclude()
+cat("\n\n")
+
 # You don't need to transform it into long format
 # statim already has `on()`
 cat("Mood's Median Test (one-liner) with `on()`: \n\n")

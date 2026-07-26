@@ -124,6 +124,79 @@ mmdtest_def_xby = statim::stat_define(
                     display_ct = !isFALSE(display_var)
                 )
             }
+        ),
+        pairwise = statim::variant(
+            fn = function(.proc) {
+                curr_data = .proc$x_data[[1]]
+                group_data = vctrs::vec_cast(
+                    .proc$group_data[[1]],
+                    character()
+                )
+
+                groups = unique(group_data)
+                k = length(groups)
+                if (k < 2) {
+                    cli::cli_abort(
+                        "At least two groups are required for pairwise comparisons."
+                    )
+                }
+                pairs = utils::combn(groups, 2, simplify = FALSE)
+                group_a = purrr::map_chr(pairs, 1)
+                group_b = purrr::map_chr(pairs, 2)
+
+                med_test = mood_median_test_group(curr_data, group_data)
+                med_tests = purrr::map2(group_a, group_b, function(a, b) {
+                    mood_median_test_cpp(
+                        list(
+                            curr_data[group_data == a],
+                            curr_data[group_data == b]
+                        )
+                    )
+                })
+
+                list(
+                    test = tibble::tibble(
+                        median = med_test$median,
+                        n_groups = med_test$n_groups,
+                        statistic = med_test$statistic,
+                        df = med_test$df,
+                        p_value = med_test$p_value
+                    ),
+                    comps = tibble::tibble(
+                        comparison = paste(group_a, "and", group_b),
+                        statistic = purrr::map_dbl(med_tests, "statistic"),
+                        p_value = purrr::map_dbl(med_tests, "p_value"),
+                        median = purrr::map_dbl(med_tests, "median")
+                    )
+                )
+            },
+            print = function(x, ...) {
+                cli::cat_line(cli::rule(left = "Summary", line = "-"), "\n")
+                tabstats::table_default(
+                    x@data$test,
+                    style_columns = tabstats::td_style(
+                        p_value = pval_styler
+                    )
+                )
+                cat("\n\n")
+                cli::cat_line(cli::rule(left = "Comparison", line = "-"), "\n")
+                tabstats::table_default(
+                    x@data$comps,
+                    style_columns = tabstats::td_style(
+                        p_value = pval_styler
+                    ),
+                    vb = list(
+                        char = "\u2502",
+                        after = 1
+                    ),
+                    digits_by_col = list(
+                        median = 2
+                    )
+                )
+                cat("\n\n")
+
+                invisible(x)
+            }
         )
     )
 )
