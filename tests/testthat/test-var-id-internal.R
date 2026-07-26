@@ -37,7 +37,10 @@ test_that("quo_resolver() error message names the offending expression", {
 })
 
 test_that("quo_resolver() errors on a tidyselect helper when no data is present", {
-    q = rlang::new_quosure(quote(tidyselect::starts_with("x")), env = environment())
+    q = rlang::new_quosure(
+        quote(tidyselect::starts_with("x")),
+        env = environment()
+    )
 
     expect_error(quo_resolver(q), "Invalid input in model ID")
 })
@@ -63,7 +66,10 @@ test_that("classify_quo() tags a c() containing a non-symbol as :error", {
 })
 
 test_that("classify_quo() has no branch for tidyselect helpers", {
-    q = rlang::new_quosure(quote(tidyselect::starts_with("x")), env = environment())
+    q = rlang::new_quosure(
+        quote(tidyselect::starts_with("x")),
+        env = environment()
+    )
 
     expect_equal(classify_quo(q)$type, ":error")
 })
@@ -85,7 +91,10 @@ test_that("format_quo_label() falls back to rlang::as_label() for a tidyselect h
     # ":tidyselect" = deparse(cl$expr) branch inside format_quo_label() is
     # dead code; this pins down what actually happens instead (the switch()
     # default).
-    q = rlang::new_quosure(quote(tidyselect::starts_with("x")), env = environment())
+    q = rlang::new_quosure(
+        quote(tidyselect::starts_with("x")),
+        env = environment()
+    )
 
     expect_equal(format_quo_label(q), rlang::as_label(q))
 })
@@ -106,10 +115,12 @@ test_that("vars_preview() formats each column as <type [length]>", {
     expect_equal(out[[1]]$name, "n")
     expect_equal(out[[1]]$preview, paste0("<", pillar::type_sum(1:3), " [3]>"))
     expect_equal(out[[2]]$name, "s")
-    expect_equal(out[[2]]$preview, paste0("<", pillar::type_sum(c("a", "b")), " [2]>"))
+    expect_equal(
+        out[[2]]$preview,
+        paste0("<", pillar::type_sum(c("a", "b")), " [2]>")
+    )
 })
 
 test_that("vars_preview() returns an empty list for an empty input", {
     expect_equal(vars_preview(list()), list())
 })
-

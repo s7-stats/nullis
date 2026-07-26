@@ -169,7 +169,10 @@ test_that("var_id_info() populates vars with one preview entry per column, in x/
     info = var_id_info(m, processed = processed)
 
     expect_length(info@vars, 3)
-    expect_equal(vapply(info@vars, `[[`, character(1), "name"), c("x1", "g", "blk"))
+    expect_equal(
+        vapply(info@vars, `[[`, character(1), "name"),
+        c("x1", "g", "blk")
+    )
 })
 
 test_that("var_id_info() always marks registered = TRUE", {
