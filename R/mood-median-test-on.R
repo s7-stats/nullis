@@ -41,7 +41,7 @@ mmdtest_def_on = statim::stat_define(
     model_type = on,
     impl = statim::agendas(
         base = statim::baseline(
-            fn = function(.proc, custom_median = NULL, display_ct = FALSE) {
+            fn = function(.proc, custom_median = NULL, display_ct = TRUE) {
                 test = mood_median_test_cpp(.proc$data, custom_median)
 
                 class_median_test(
