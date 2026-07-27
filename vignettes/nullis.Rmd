@@ -28,9 +28,10 @@ library(statim)
 Here are the collection of Hypothesis tests under nonparametric statistics implemented in `{nullis}`:
 
 1.  Mood's median test (`MEDIAN_TEST()`)
-2.  Friedman's Rank Sum Test (`FRIEDMAN_TEST()`)
+2.  Friedman's Rank Sum test (`FRIEDMAN_TEST()`)
 3.  Kruskal-Wallis H test (`KW_TEST()`)
-4.  Jonckheere-Terpstra Test (`JT_TEST()`)
+4.  Jonckheere-Terpstra test (`JT_TEST()`)
+5.  Cochran's Q test (`COCHRAN_QTEST()`)
 
 On the other hand, here are the collection of regression models:
 
