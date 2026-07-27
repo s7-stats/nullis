@@ -75,10 +75,10 @@ class_cq_test = S7::new_class(
         ),
         freq_table = S7::new_property(
             class = S7::class_any,
-            default = quote(list()),
+            default = quote(matrix(nrow = 0, ncol = 2)),
             validator = function(value) {
-                if (!all(vapply(value, is.matrix, logical(1)))) {
-                    "freq_table must be a list of integer matrices"
+                if (!is.matrix(value)) {
+                    "freq_table must be a matrix"
                 }
             }
         ),
@@ -110,7 +110,7 @@ S7::method(print, class_cq_test) = function(x, ...) {
     cat("\n\n")
 
     # ---- Frequency Table ----
-    if (!is.null(x@freq_table)) {
+    if (nrow(x@freq_table) > 0) {
         cli::cat_line(cli::rule(left = "Frequency Table", line = "-"), "\n")
 
         tabstats::cross_table(

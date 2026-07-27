@@ -27,11 +27,15 @@ cqtest_def_xby = statim::stat_define(
                     cochran_q_test_group(.proc$x_data[[1]], g, .proc$block_data[[1]])
                 })
 
-                class_kw_test(
+                freq_table = as.matrix(table(.proc$group_data[[1]], .proc$x_data[[1]]))
+
+                class_cq_test(
                     vars = names(.proc$group_data),
                     statistic = vapply(tests, \(t) t$statistic, numeric(1)),
                     df = vapply(tests, \(t) t$df, numeric(1)),
-                    p_value = vapply(tests, \(t) t$p_value, numeric(1))
+                    p_value = vapply(tests, \(t) t$p_value, numeric(1)),
+                    freq_table = freq_table,
+                    n_groups = vapply(tests, \(t) t$n_groups, integer(1))
                 )
             }
         )
