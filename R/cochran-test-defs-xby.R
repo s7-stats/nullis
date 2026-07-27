@@ -23,18 +23,31 @@ cqtest_def_xby = statim::stat_define(
     impl = statim::agendas(
         base = statim::baseline(
             fn = function(.proc) {
-                tests = lapply(.proc$group_data, function(g) {
-                    cochran_q_test_group(
-                        .proc$x_data[[1]],
-                        g,
-                        .proc$block_data[[1]]
+                x_raw = .proc$x_data[[1]]
+
+                if (is.factor(x_raw)) {
+                    if (nlevels(x_raw) != 2) {
+                        cli::cli_abort(
+                            "Variable `x` must have exactly 2 levels when supplied as a {.cls factor}."
+                        )
+                    }
+                    x_labels = levels(x_raw)
+                    x = as.integer(x_raw) - 1L
+                } else if (is.numeric(x_raw)) {
+                    x_labels = c("0", "1")
+                    x = x_raw
+                } else {
+                    cli::cli_abort(
+                        "Variable `x` must be supplied as a {.cls factor} or an {.cls integer}."
                     )
+                }
+
+                tests = lapply(.proc$group_data, function(g) {
+                    cochran_q_test_group(x, g, .proc$block_data[[1]])
                 })
 
-                freq_table = as.matrix(table(
-                    .proc$group_data[[1]],
-                    .proc$x_data[[1]]
-                ))
+                freq_table = table(" " = .proc$group_data[[1]], Value = x)
+                colnames(freq_table) = x_labels
 
                 class_cq_test(
                     vars = names(.proc$group_data),
