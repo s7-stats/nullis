@@ -24,10 +24,17 @@ cqtest_def_xby = statim::stat_define(
         base = statim::baseline(
             fn = function(.proc) {
                 tests = lapply(.proc$group_data, function(g) {
-                    cochran_q_test_group(.proc$x_data[[1]], g, .proc$block_data[[1]])
+                    cochran_q_test_group(
+                        .proc$x_data[[1]],
+                        g,
+                        .proc$block_data[[1]]
+                    )
                 })
 
-                freq_table = as.matrix(table(.proc$group_data[[1]], .proc$x_data[[1]]))
+                freq_table = as.matrix(table(
+                    .proc$group_data[[1]],
+                    .proc$x_data[[1]]
+                ))
 
                 class_cq_test(
                     vars = names(.proc$group_data),
