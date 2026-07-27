@@ -378,7 +378,10 @@ test_that("COCHRAN_QTEST(x_by_b()) with multiple grouping variables keeps only t
 
 test_that("COCHRAN_QTEST(x_by_b()) allows the `x` (response variable) a factor", {
     set.seed(123)
-    x = factor(sample(0:1, 45, replace = TRUE), labels = c("Negative", "Positive"))
+    x = factor(
+        sample(0:1, 45, replace = TRUE),
+        labels = c("Negative", "Positive")
+    )
     treatment = gl(3, 1, 45, labels = c("A", "B", "C"))
     block = gl(5, 3, 45, labels = 1:5)
 
