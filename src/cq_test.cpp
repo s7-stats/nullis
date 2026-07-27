@@ -18,7 +18,7 @@ using Rcpp::CharacterVector;
 using Rcpp::stop;
 using Rcpp::warning;
 
-static cqObject compute_cq(
+cqObject compute_cq(
         const double* values,
         int n,
         int k
