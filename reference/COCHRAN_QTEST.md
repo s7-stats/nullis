@@ -84,9 +84,9 @@ COCHRAN_QTEST(x_by_b(x, treatment, block))
 #> 
 #> -- Frequency Table -------------------------------------------------------------
 #> 
-#>                             Cross Tabulation:  by    
+#>                           Cross Tabulation:   by Value
 #>                           ───────────────────────────
-#>                                               
+#>                                     Value     
 #>                           ───────────────────────────
 #>                                     0    1    TOTAL  
 #>                           ───────────────────────────
