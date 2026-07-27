@@ -59,7 +59,7 @@ COCHRAN_QTEST = statim::HTEST_FN(
 #'
 #' @export
 class_cq_test = S7::new_class(
-    "median_test",
+    "cq_test",
     parent = statim::class_stat_infer,
     properties = list(
         vars = S7::class_character,
