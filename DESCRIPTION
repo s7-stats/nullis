@@ -45,6 +45,8 @@ Collate:
     'mood-median-test.R'
     'friedman-test-defs.R'
     'friedman-test.R'
+    'cochran-test-defs-xby.R'
+    'cochran-test.R'
     'kruskal-test-defs-on.R'
     'kruskal-test-defs-xby.R'
     'jt-test-defs-xby.R'
