@@ -11,7 +11,9 @@ manual_cochran_q = function(design_matrix) {
     sum_col_squared = sum(col_sums^2)
     sum_row_squared = sum(row_sums^2)
 
-    Q = (k - 1) * (k * sum_col_squared - total_sum^2) / (k * total_sum - sum_row_squared)
+    Q = (k - 1) *
+        (k * sum_col_squared - total_sum^2) /
+        (k * total_sum - sum_row_squared)
     df = k - 1
     p_value = pchisq(Q, df, lower.tail = FALSE)
 
@@ -19,14 +21,19 @@ manual_cochran_q = function(design_matrix) {
 }
 
 test_that("cochran_q_test_group matches a manual Cochran's Q formula", {
-    outcome = c(0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1)
+    set.seed(5472)
+    outcome = sample(0:1, 30, replace = TRUE)
     treatment = gl(3, 1, 30, labels = LETTERS[1:3])
     block = gl(10, 3, labels = letters[1:10])
 
     design_matrix = t(matrix(outcome, nrow = 3, ncol = 10))
     ref = manual_cochran_q(design_matrix)
 
-    cpp_out = cochran_q_test_group(outcome, as.character(treatment), as.character(block))
+    cpp_out = cochran_q_test_group(
+        outcome,
+        as.character(treatment),
+        as.character(block)
+    )
 
     expect_equal(cpp_out$statistic, ref$statistic, tolerance = 1e-8)
     expect_equal(cpp_out$df, ref$df)
@@ -35,7 +42,8 @@ test_that("cochran_q_test_group matches a manual Cochran's Q formula", {
 })
 
 test_that("cochran_q_test_cpp matches cochran_q_test_group on equivalent data", {
-    outcome = c(0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1)
+    set.seed(5472)
+    outcome = sample(0:1, 30, replace = TRUE)
     treatment = gl(3, 1, 30, labels = LETTERS[1:3])
     block = gl(10, 3, labels = letters[1:10])
 
@@ -43,7 +51,11 @@ test_that("cochran_q_test_cpp matches cochran_q_test_group on equivalent data", 
     blocks_list = as.list(as.data.frame(design_matrix))
 
     list_out = cochran_q_test_cpp(blocks_list)
-    group_out = cochran_q_test_group(outcome, as.character(treatment), as.character(block))
+    group_out = cochran_q_test_group(
+        outcome,
+        as.character(treatment),
+        as.character(block)
+    )
 
     expect_equal(list_out$statistic, group_out$statistic, tolerance = 1e-8)
     expect_equal(list_out$df, group_out$df)
@@ -70,7 +82,11 @@ test_that("cochran_q_test_group is invariant to label spelling and row order", {
     treatment = gl(3, 1, 30, labels = LETTERS[1:3])
     block = gl(10, 3, labels = letters[1:10])
 
-    base_out = cochran_q_test_group(outcome, as.character(treatment), as.character(block))
+    base_out = cochran_q_test_group(
+        outcome,
+        as.character(treatment),
+        as.character(block)
+    )
 
     relabel_map = c(A = "zzz_treat", B = "mmm_treat", C = "aaa_treat")
     relabeled_out = cochran_q_test_group(
@@ -92,7 +108,8 @@ test_that("cochran_q_test_group is invariant to label spelling and row order", {
 })
 
 test_that("cochran_q_test_group excludes missing block/treatment combinations from the sums", {
-    outcome = c(0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1)
+    set.seed(5472)
+    outcome = sample(0:1, 30, replace = TRUE)
     treatment = as.character(gl(3, 1, 30, labels = LETTERS[1:3]))
     block = as.character(gl(10, 3, labels = letters[1:10]))
 
@@ -106,7 +123,11 @@ test_that("cochran_q_test_group excludes missing block/treatment combinations fr
     design_matrix[2, 2] = NA
     ref = manual_cochran_q(design_matrix)
 
-    cpp_out = cochran_q_test_group(reduced_outcome, reduced_treatment, reduced_block)
+    cpp_out = cochran_q_test_group(
+        reduced_outcome,
+        reduced_treatment,
+        reduced_block
+    )
 
     expect_equal(cpp_out$statistic, ref$statistic, tolerance = 1e-8)
     expect_equal(cpp_out$df, ref$df)
@@ -122,7 +143,11 @@ test_that("cochran_q_test_group handles the minimal k = 2 case", {
     design_matrix = t(matrix(outcome, nrow = 2, ncol = 10))
     ref = manual_cochran_q(design_matrix)
 
-    cpp_out = cochran_q_test_group(outcome, as.character(treatment), as.character(block))
+    cpp_out = cochran_q_test_group(
+        outcome,
+        as.character(treatment),
+        as.character(block)
+    )
 
     expect_equal(cpp_out$statistic, ref$statistic, tolerance = 1e-8)
     expect_equal(cpp_out$df, 1)
@@ -269,9 +294,17 @@ test_that("COCHRAN_QTEST(x_by_b()) matches cochran_q_test_group called directly"
     block = gl(15, 3, labels = 1:15)
 
     piped = COCHRAN_QTEST(x_by_b(x, treatment, block))
-    direct = cochran_q_test_group(x, as.character(treatment), as.character(block))
+    direct = cochran_q_test_group(
+        x,
+        as.character(treatment),
+        as.character(block)
+    )
 
-    expect_equal(unname(piped@data@statistic), direct$statistic, tolerance = 1e-8)
+    expect_equal(
+        unname(piped@data@statistic),
+        direct$statistic,
+        tolerance = 1e-8
+    )
     expect_equal(unname(piped@data@p_value), direct$p_value, tolerance = 1e-8)
     expect_equal(unname(piped@data@df), direct$df)
     expect_equal(unname(piped@data@n_groups), direct$n_groups)
@@ -299,8 +332,16 @@ test_that("COCHRAN_QTEST(x_by_b()) with multiple grouping variables runs one tes
 
     piped = COCHRAN_QTEST(x_by_b(x, c(treatment, treatment2), block))
 
-    direct_treatment = cochran_q_test_group(x, as.character(treatment), as.character(block))
-    direct_treatment2 = cochran_q_test_group(x, as.character(treatment2), as.character(block))
+    direct_treatment = cochran_q_test_group(
+        x,
+        as.character(treatment),
+        as.character(block)
+    )
+    direct_treatment2 = cochran_q_test_group(
+        x,
+        as.character(treatment2),
+        as.character(block)
+    )
 
     expect_equal(unname(piped@data@vars), c("treatment", "treatment2"))
     expect_equal(
