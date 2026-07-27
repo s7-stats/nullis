@@ -10,6 +10,30 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// cochran_q_test_cpp
+List cochran_q_test_cpp(const List& blocks);
+RcppExport SEXP _nullis_cochran_q_test_cpp(SEXP blocksSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type blocks(blocksSEXP);
+    rcpp_result_gen = Rcpp::wrap(cochran_q_test_cpp(blocks));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cochran_q_test_group
+List cochran_q_test_group(const NumericVector& x, const CharacterVector& treatment, const CharacterVector& block);
+RcppExport SEXP _nullis_cochran_q_test_group(SEXP xSEXP, SEXP treatmentSEXP, SEXP blockSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const CharacterVector& >::type treatment(treatmentSEXP);
+    Rcpp::traits::input_parameter< const CharacterVector& >::type block(blockSEXP);
+    rcpp_result_gen = Rcpp::wrap(cochran_q_test_group(x, treatment, block));
+    return rcpp_result_gen;
+END_RCPP
+}
 // friedman_test_matrix
 List friedman_test_matrix(const NumericMatrix& data);
 RcppExport SEXP _nullis_friedman_test_matrix(SEXP dataSEXP) {
@@ -111,6 +135,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_nullis_cochran_q_test_cpp", (DL_FUNC) &_nullis_cochran_q_test_cpp, 1},
+    {"_nullis_cochran_q_test_group", (DL_FUNC) &_nullis_cochran_q_test_group, 3},
     {"_nullis_friedman_test_matrix", (DL_FUNC) &_nullis_friedman_test_matrix, 1},
     {"_nullis_friedman_test_group", (DL_FUNC) &_nullis_friedman_test_group, 3},
     {"_nullis_jonckheere_terpstra_test", (DL_FUNC) &_nullis_jonckheere_terpstra_test, 4},
