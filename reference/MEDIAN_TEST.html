@@ -144,27 +144,55 @@ median) whenever you're testing a single group.</p>
 <span class="r-in"><span><span class="fu">MEDIAN_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   vars  n_groups  Q statistic  df  p_value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    g       5         3.066     4   <span style="font-style: italic;"> 0.547</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   vars  statistic  df  p_value  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    g      3.066    4   <span style="font-style: italic;"> 0.547</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Can't find property &lt;nullis::median_test&gt;@freq_table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Contingency Table -----------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                            Cross Tabulation: x by y              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               ───────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            y              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               ───────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 x                  d   e    c   a    b    TOTAL  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               ───────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 &gt; Median (1.04)    4   5    3   5    8     25    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 &lt;= Median (1.04)   5   6    5   6    3     25    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               ───────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 TOTAL              9   11   8   11   11    50    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               ───────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># against a hypothesized median rather than the sample's own</span></span></span>
 <span class="r-in"><span><span class="fu">MEDIAN_TEST</span><span class="op">(</span><span class="fu"><a href="https://s7-stats.github.io/statim/reference/x_by.html" class="external-link">x_by</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">g</span><span class="op">)</span>, custom_median <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Summary ---------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   vars  n_groups  Q statistic  df  p_value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    g       5         3.066     4   <span style="font-style: italic;"> 0.547</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   vars  statistic  df  p_value  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    g      3.066    4   <span style="font-style: italic;"> 0.547</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ────────────────────────────────</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Can't find property &lt;nullis::median_test&gt;@freq_table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -- Contingency Table -----------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                             Cross Tabulation: x by y            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 ────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                           y              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 ────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   x               d   e    c   a    b    TOTAL  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 ────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   &gt; Median (1)    4   5    3   5    8     25    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   &lt;= Median (1)   5   6    5   6    3     25    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 ────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   TOTAL           9   11   8   11   11    50    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 ────────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
