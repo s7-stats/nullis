@@ -52,14 +52,19 @@ static cqObject compute_cq(
 }
 
 // [[Rcpp::export]]
-List cochran_q_test_matrix(const NumericMatrix& data) {
-    int n = data.nrow();
-    int k = data.ncol();
+List cochran_q_test_cpp(const List& blocks) {
+    int n = as<NumericVector>(blocks[0]).size();
+    int k = blocks.size();
 
     std::vector<double> values(n * k);
+
     for (int i = 0; i < k; ++i) {
+        NumericVector col = blocks[i];
+        if (col.size() != n) {
+            stop("All elements of 'blocks' must have the same length.");
+        }
         for (int j = 0; j < n; ++j) {
-            values[i * n + j] = data(j, i);
+            values[i * n + j] = col[j];
         }
     }
 
@@ -68,9 +73,32 @@ List cochran_q_test_matrix(const NumericMatrix& data) {
     return List::create(
         Named("statistic") = cqtest.Q,
         Named("df") = cqtest.df,
-        Named("p_value") = cqtest.p_value
+        Named("p_value") = cqtest.p_value,
+        Named("n_groups") = k
     );
 }
+
+// // [[Rcpp::export]]
+// List cochran_q_test_matrix(const NumericMatrix& data) {
+//     int n = data.nrow();
+//     int k = data.ncol();
+//
+//     std::vector<double> values(n * k);
+//     for (int i = 0; i < k; ++i) {
+//         for (int j = 0; j < n; ++j) {
+//             values[i * n + j] = data(j, i);
+//         }
+//     }
+//
+//     cqObject cqtest = compute_cq(values.data(), n, k);
+//
+//     return List::create(
+//         Named("statistic") = cqtest.Q,
+//         Named("df") = cqtest.df,
+//         Named("p_value") = cqtest.p_value,
+//         Named("n_groups") = k
+//     );
+// }
 
 // [[Rcpp::export]]
 List cochran_q_test_group(
@@ -112,7 +140,8 @@ List cochran_q_test_group(
     return List::create(
         Named("statistic") = cqtest.Q,
         Named("df") = cqtest.df,
-        Named("p_value") = cqtest.p_value
+        Named("p_value") = cqtest.p_value,
+        Named("n_groups") = k
     );
 }
 
